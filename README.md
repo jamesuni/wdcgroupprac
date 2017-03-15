@@ -13,5 +13,6 @@ Finally, committing to group repository:
 `git push`  
 It will ask for credentials, enter your github user/pass  
 
+Modified files either need to be added to the staging area with `git add ./(file)` before being committed  
 
 Just typing git at the terminal will give you an overview of the general commands
