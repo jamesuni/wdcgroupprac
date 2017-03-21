@@ -1,0 +1,78 @@
+
+
+<!DOCTYPE html>
+<html>
+    
+    
+    <script type="text/javascript" >
+        
+        function setup() //commands to be executed at the start of the page loading
+        {
+             document.getElementById('buttonBold').style.backgroundColor = "lightblue";
+             document.getElementById('buttonItalic').style.backgroundColor = "lightblue";
+        }
+        
+        function boldText() 
+        {
+            if (document.getElementById('journalText').style.fontWeight == "bold")
+                {
+                   document.getElementById('journalText').style.fontWeight = "normal";
+                   document.getElementById('buttonBold').style.backgroundColor = "transparent";
+                }
+            else{
+                    document.getElementById('journalText').style.fontWeight = "bold";
+                    document.getElementById('buttonBold').style.backgroundColor = "lightblue";
+                }                
+        }
+        
+        function italicText() 
+        {
+            if (document.getElementById('journalText').style.fontStyle == "italic")
+                {
+                   document.getElementById('journalText').style.fontStyle = "normal";
+                   document.getElementById('buttonItalic').style.backgroundColor = "transparent";
+                }
+            else{
+                    document.getElementById('journalText').style.fontStyle = "italic";
+                    document.getElementById('buttonItalic').style.backgroundColor = "lightblue";
+                }          
+        }
+        
+        
+    </script>
+    
+
+    
+        <head>
+        <link rel="stylesheet" href="mainTheme.css">
+        </head>
+        
+    
+    <h1> Journal Website </h1>
+    
+    <h2> Your Journal </h2>
+    
+        
+            Write journal entry: <br>  
+    <button onclick="boldText()" id="buttonBold"> B </button>
+    
+    <button onclick="italicText()" id="buttonItalic">I</button>
+
+    <form action="/action_page.php" method="get">
+    
+   
+        
+
+    <textarea rows="20" cols="75" id="journalText">
+    </textarea> 
+    
+
+        
+    <button name="name" value="value" type="submit" id="submit"> Submit Entry </button>    
+
+        
+    </form>
+    
+    
+        
+</html>
