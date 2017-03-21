@@ -1,0 +1,45 @@
+
+
+
+
+
+
+html {
+    background: white;
+    text-align: center; /* by default, text should be 'scaled' and 'centered' */
+    font-family: arial;
+    }
+
+#submit {
+       background-color: #ccc;
+    background-image: url(journal.jpg)
+    
+}
+
+#buttonBold {
+       font-weight:bold
+}
+
+/* not working
+.button:hover #submit.top {
+       border: solid #78ceff 2px;
+}
+*/
+
+#buttonItalic {
+       font-style:italic
+}
+
+#buttonUnderline {
+       text-decoration:underline
+}
+
+div1  /* div1 is for the main title/logo that is on every page */
+{
+/*       font-style:italic;*/
+}
+
+div2 /* div2 is for the rest of the content on the page, as seperated from the background */
+{
+/*        font-style:italic;*/
+}
