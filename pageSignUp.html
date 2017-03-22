@@ -1,0 +1,82 @@
+
+
+<!DOCTYPE html>
+<html>
+    
+        <head> <link rel="stylesheet" href="mainTheme.css"> </head>
+
+
+    <script type="text/javascript" >
+        
+        function verifyEmail()
+        {
+            var stringEmail = document.getElementById('emailText').value;
+            var containsSign = stringEmail.search('@');
+                        
+            if (containsSign == -1)
+                {
+                     document.getElementById('emailText').style.borderColor="red"
+//                    alert("Invalid Email! must contain an '@' address sign");
+                }
+            else
+            {
+                 document.getElementById('emailText').style.borderColor="blue"
+                //valid?
+            }
+            
+        }
+        
+        function verifyPassword()
+        {
+           var stringPassword = document.getElementById('passwordText').value;
+            
+            if (stringPassword.length < 6)
+                {
+                    document.getElementById('passwordText').style.borderColor="red"
+//                    alert("Invalid Password: must be more than 6 letters");
+                }
+            else
+            {
+                document.getElementById('passwordText').style.borderColor="blue"
+//                document.getElementById('passwordText').borderWidth = "5";
+                ///valid?
+            }
+
+
+        }
+        
+        
+    </script>
+    
+    
+    <div1>  
+        <h1> Journal Website </h1> 
+    </div1>
+    
+    
+    <div2>
+        <h2> Account Sign-Up </h2>
+    
+        <form action="/action_page.php" method="get">
+            Enter email: <br>  <!-- <br> = break -->
+            <input id="emailText" type="text"> 
+            <button onclick="verifyEmail()" type="button" > Verify </button> <br> <!-- without type 'button', will auto-send the form! -->
+    
+            Enter password <br>
+            <input id= "passwordText" type="password"> 
+                <button onclick="verifyPassword()" type="button" > Verify </button> <br> <br>  <!-- without type 'button', will auto-send the form! -->
+
+            <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
+            <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
+    
+            <button name="name" value="value" type="submit" id="submit"> Signup </button>    
+
+        </form>
+    </div2>
+   
+ 
+</html>
+
+
+
+

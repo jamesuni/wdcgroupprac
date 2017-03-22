@@ -8,8 +8,10 @@
         
         function setup() //commands to be executed at the start of the page loading
         {
-             document.getElementById('buttonBold').style.backgroundColor = "lightblue";
-             document.getElementById('buttonItalic').style.backgroundColor = "lightblue";
+//             document.getElementById('buttonBold').style.backgroundColor = "lightblue";
+//             document.getElementById('buttonItalic').style.backgroundColor = "lightblue";
+            document.getElementById('textColor').firstElementChild.style.color = "blue";
+            
         }
         
         function boldText() 
@@ -38,6 +40,33 @@
                 }          
         }
         
+        function underlineText() 
+        {
+            if (document.getElementById('journalText').style.textDecoration == "underline")
+                {
+                   document.getElementById('journalText').style.textDecoration = "none"; /* 'none' not 'normal' */
+                   document.getElementById('buttonUnderline').style.backgroundColor = "transparent";
+                }
+            else{
+                    document.getElementById('journalText').style.textDecoration = "underline";
+                    document.getElementById('buttonUnderline').style.backgroundColor = "lightblue";
+                }          
+        }
+        
+        function chooseFont()
+        {
+            document.getElementById('journalText').style.fontFamily = textFont.value;   
+        }
+        
+         function chooseSize()
+        {   
+            document.getElementById('journalText').style.fontSize = textSize.value;  
+        }
+        
+        function chooseColor()
+        {
+             document.getElementById('journalText').style.color = textColor.value;  
+        }
         
     </script>
     
@@ -48,31 +77,71 @@
         </head>
         
     
-    <h1> Journal Website </h1>
+<div1> 
+        <h1> Journal Website </h1>
+</div1>
+   
+    
+<div2>
+    
+    
+    
+    
     
     <h2> Your Journal </h2>
     
         
             Write journal entry: <br>  
     <button onclick="boldText()" id="buttonBold"> B </button>
-    
     <button onclick="italicText()" id="buttonItalic">I</button>
+    <button onclick="underlineText()" id="buttonUnderline">U</button>
 
+        <select id="textFont" onchange = "chooseFont()">
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Arial">Arial </option>
+            <option value="Courier">Courier</option>
+            <option value="Verdana"> Verdana</option>
+            <option value="Impact"> Impact</option>
+
+        </select> 
+    
+        <select id="textSize" onchange = "chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
+            <option value="12px"> 10pt </option>
+            <option value="12px" selected> 12pt </option>
+            <option value="14px"> 14pt </option>
+            <option value="16px"> 16pt </option>
+            <option value="18px"> 18pt </option>
+            <option value="20px"> 20pt </option>
+            <option value="22px"> 22pt </option>
+            <option value="24px"> 24pt </option>
+            <option value="26px"> 26pt </option>
+        </select> 
+    
+        <select id="textColor" onchange = "chooseColor()">
+            <option value="black" > Black </option> <!-- it is impossible to style <option> elements -->
+            <option value= "blue" > Blue </option>
+            <option value="red"   > Red </option>
+            <option value="green" > Green  </option>
+            <option value="yellow" >Yellow  </option>
+            <option value="pink"  > Pink  </option>
+            <option value="cyan" >  Cyan  </option>
+            <option value="grey" >  Grey  </option>
+            <option value="orange" >Orange  </option>
+            <option value="brown" > Brown  </option>
+            <option value="white" > White  </option>
+            <option value="beige" > Beige  </option>
+        </select> 
+    
     <form action="/action_page.php" method="get">
     
-   
-        
-
-    <textarea rows="20" cols="75" id="journalText">
-    </textarea> 
+    <textarea rows="20" cols="75" id="journalText"> </textarea> 
     
-
-        
     <button name="name" value="value" type="submit" id="submit"> Submit Entry </button>    
 
         
     </form>
     
+</div2>
     
         
 </html>
