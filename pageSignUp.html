@@ -12,16 +12,23 @@
         {
             var stringEmail = document.getElementById('emailText').value;
             var containsSign = stringEmail.search('@');
-                        
+            var containsDot = stringEmail.search(/\./); //just .search('.') does not work – '.' is Regular Expression for 'any', so if the string contains anything, it will return true
+  
             if (containsSign == -1)
                 {
                      document.getElementById('emailText').style.borderColor="red"
-//                    alert("Invalid Email! must contain an '@' address sign");
+                     document.getElementById('emailText').value = "";
+                     document.getElementById('emailText').placeholder = "(must contain '@')";
+                }
+            else if (containsDot == -1)
+                {
+                     document.getElementById('emailText').style.borderColor="red"
+                     document.getElementById('emailText').value = "";
+                     document.getElementById('emailText').placeholder = "(must contain '.')";
                 }
             else
             {
                  document.getElementById('emailText').style.borderColor="blue"
-                //valid?
             }
             
         }
@@ -29,17 +36,53 @@
         function verifyPassword()
         {
            var stringPassword = document.getElementById('passwordText').value;
+           var numberArray = "0123456789";
+           var symbolArray = "!@#$%^&*<>?`~\|:;().,{}[]"
             
+           
+            var containsNumber = false;
+            var containsSymbol = false;
+            for (i = 0; i < stringPassword.length; i++) //note it is just 'i = 0' not 'int i = 0'
+                {
+                    for (j = 0; j < numberArray.length; j++) //NUMBERS
+                        {
+                            if (stringPassword.charAt(i) == numberArray.charAt(j))
+                                {
+                                    containsNumber = true;
+                                }
+                        }
+                    
+                    for (j = 0; j < symbolArray.length; j++) //SYMBOLS
+                        {
+                            if (stringPassword.charAt(i) == symbolArray.charAt(j))
+                                {
+                                    containsSymbol = true;
+                                }
+                        }
+                }
+            
+
             if (stringPassword.length < 6)
                 {
                     document.getElementById('passwordText').style.borderColor="red"
-//                    alert("Invalid Password: must be more than 6 letters");
+                    document.getElementById('passwordText').value = "";
+                    document.getElementById('passwordText').placeholder = "(6 letters or more)";
+                }
+            else if (containsNumber == false)
+                {
+                    document.getElementById('passwordText').style.borderColor="red"
+                    document.getElementById('passwordText').value = "";
+                    document.getElementById('passwordText').placeholder = "(must contain a number)";
+                }
+            else if (containsSymbol == false)
+                {
+                    document.getElementById('passwordText').style.borderColor="red"
+                    document.getElementById('passwordText').value = "";
+                    document.getElementById('passwordText').placeholder = "(must contain a symbol)";
                 }
             else
             {
                 document.getElementById('passwordText').style.borderColor="blue"
-//                document.getElementById('passwordText').borderWidth = "5";
-                ///valid?
             }
 
 
@@ -59,11 +102,11 @@
     
         <form action="/action_page.php" method="get">
             Enter email: <br>  <!-- <br> = break -->
-            <input id="emailText" type="text"> 
+            <input placeholder="..." id="emailText" type="text"> 
             <button onclick="verifyEmail()" type="button" > Verify </button> <br> <!-- without type 'button', will auto-send the form! -->
     
             Enter password <br>
-            <input id= "passwordText" type="password"> 
+            <input placeholder="..." id= "passwordText" type="password"> 
                 <button onclick="verifyPassword()" type="button" > Verify </button> <br> <br>  <!-- without type 'button', will auto-send the form! -->
 
             <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
