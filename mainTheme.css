@@ -41,5 +41,6 @@ div1  /* div1 is for the main title/logo that is on every page */
 
 div2 /* div2 is for the rest of the content on the page, as seperated from the background */
 {
+        text-align: center; /* by default, text should be 'scaled' and 'centered' */
 /*        font-style:italic;*/
 }
