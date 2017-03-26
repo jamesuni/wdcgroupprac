@@ -236,30 +236,101 @@ function verifyEmail()
         }
 
 
-//
-        function loadPastEntries()
+
+//        function gotoNewEntry()
+//        {
+//            
+//        }
+
+        function newTextarea()
         {
-            document.getElementById('history1').value = sessionStorage.getItem('content1');
-            document.getElementById('title1').value = sessionStorage.getItem('title1');
+        
+        
+            //credit to http://stackoverflow.com/questions/7377399/creating-a-textarea-with-javascript#7377447
+            var div = document.getElementById("divThree");
+            
+            var inputTitle = document.createElement("textarea");
+            var inputJournal = document.createElement("textarea");
+            
+ 
+            
+            
+            inputJournal.value = sessionStorage.getItem('content1');
+            inputTitle.value = sessionStorage.getItem('title1');
             
             if (sessionStorage.getItem("bold1") == "true")
                 {
-                    document.getElementById("history1").style.fontWeight = "bold";
+                    inputJournal.style.fontWeight = "bold";
                 }
             
             if (sessionStorage.getItem("italic1") == "true")
                 {
-                    document.getElementById("history1").style.fontStyle = "italic";
+                    inputJournal.style.fontStyle = "italic";
                 }
             
             if (sessionStorage.getItem("underline1") == "true")
                 {
-                    document.getElementById("history1").style.textDecoration = "underline";
+                    inputJournal.style.textDecoration = "underline";
                 }
             
-            document.getElementById("history1").style.color = sessionStorage.getItem('fontColor1');
-            document.getElementById("history1").style.fontSize = sessionStorage.getItem('fontSize1');
-            document.getElementById("history1").style.fontFamily = sessionStorage.getItem('fontFamily1');
-
+            inputJournal.style.color = sessionStorage.getItem('fontColor1');
+            inputJournal.style.fontSize = sessionStorage.getItem('fontSize1');
+            inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily1');
             
+            
+            
+    
+            
+            
+            inputTitle.cols = "50";
+            inputTitle.rows = "1";
+            
+            inputJournal.cols = "50";
+            inputJournal.rows = "20";
+            
+            div.appendChild(inputTitle); //appendChild
+//            div.insertAdjacentHTML('afterEnd', "\n" );     //not supported on firefox? //need '\n' inserted                                                                   here
+            div.appendChild(inputJournal);
+            //also need two '\n's inserted here
+            
+//            getNumEntries(); 
         }
+
+
+
+
+
+
+            //not working
+//    function getNumEntries()
+//        {
+//             var entries = 1;
+//             var currentString = 'content' + entries.toString;
+//            
+//            while (sessionStorage.getItem(currentString) != null)
+//            {
+//                entries++;
+//                currentString = 'content' + entries.toString;
+//            }
+//            
+//            alert("entries: " + entries);
+//            
+//            
+//            
+//        }
+
+
+function onSubmit() //not used yet
+{
+    sessionStorage.setItem('emailText', document.getElementById('emailText').value);
+    sessionStorage.setItem('passwordText', document.getElementById('passwordText').value);
+}
+
+
+
+
+
+
+
+
+

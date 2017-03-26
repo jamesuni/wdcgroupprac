@@ -5,16 +5,18 @@
 
 
 html {
-    background: white;
+    background: grey;
     text-align: center; /* by default, text should be 'scaled' and 'centered' */
     font-family: arial;
     }
 
+/*                      not working
 #submit {
        background-color: #ccc;
     background-image: url(journal.jpg)
     
 }
+*/
 
 #buttonBold {
        font-weight:bold
@@ -43,4 +45,38 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
 {
         text-align: center; /* by default, text should be 'scaled' and 'centered' */
 /*        font-style:italic;*/
+}
+
+
+
+
+
+/* credit to http://css3buttongenerator.com/ */
+#mainButton {
+  background: #000000;
+  background-image: -webkit-linear-gradient(top, #000000, #757575);
+  background-image: -moz-linear-gradient(top, #000000, #757575);
+  background-image: -ms-linear-gradient(top, #000000, #757575);
+  background-image: -o-linear-gradient(top, #000000, #757575);
+  background-image: linear-gradient(to bottom, #000000, #757575);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  text-shadow: 0px 0px 30px #ff0000;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 2px;
+  text-decoration: none;
+}
+
+#mainButton:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
 }

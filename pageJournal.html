@@ -9,10 +9,16 @@
     
 <div1> <h1> Journal Website </h1> </div1>
    
-
 <div2>
+    <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
+    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+    <input id="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
+     <h2> Your Journal </h2>  
+</div2>
+
+
+
     
-    <h2> Your Journal </h2>  
     
             Write journal entry: <br>  
     <button onclick="boldText()" id="buttonBold"> B </button>
@@ -56,18 +62,18 @@
     
     <form action="pageHistory.html" method="get">
     
-     <textarea placeholder= "Title:" onclick= "titleTextClick()" rows="1" cols="75" id="titleText" ></textarea> <br>
+     <textarea placeholder= "Title:" onclick= "titleTextClick()" rows="1" cols="50" id="titleText" ></textarea> <br>
         
     <textarea onclick= "journalTextClick()" placeholder="What happened today?" 
-              rows="20" cols="75" id="journalText" ></textarea> <br>   
+              rows="20" cols="50" id="journalText" ></textarea> <br>   
         
 
-    <button  type="submit" id="viewPast"> View Past Entries </button>    
+<!--    <button  type="submit" id="viewPast"> View Past Entries </button>    -->
     </form>
         <button id="submit" onclick="testSet()"> Submit Entry </button>    
 
     
-</div2>
+
     
         
 </html>

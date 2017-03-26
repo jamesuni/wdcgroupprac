@@ -7,32 +7,38 @@
     </head>
     
     <div1> <h1> Journal Website </h1> </div1>
-    
-    <div2> <h2> Your Journal </h2>
-        
-        View Past Journal Entries: <br><br>
-    
-    
-        
-<!--            <button onclick="alertEntry()" id="testContent1"> test resource 'content1' </button>-->
-            <button onclick="loadPastEntries()" id="testContent1"> Load past entries </button> <br> <br>
-            
-            <textarea placeholder= "(title)" rows="1" id= "title1" readonly="readonly"> </textarea><br>
-            <textarea id= "history1" readonly="readonly"> </textarea> 
-
-        
-    <script> 
-        
-        
-        
-        
-        </script>
-    
-    
-    
+    <div2>
+    <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
+    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+    <input id="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
+    <h2> Your Journal </h2>
     </div2>
+        
+        View Past Journal Entries <br>
+<!--        <a href="pageJournal.html">+ Write new entry</a>-->
+
+        <br><br>
     
     
-<!--    localstorage:    http://stackoverflow.com/questions/11609376/share-data-between-html-pages#11609448-->
+
+<!--            <button onClick ="href='pageJournal.html'" id="testContent1"> Write new entry </button>-->
+            <button onclick= "newTextarea()"  id="testContent1"> Load past entries </button> <br> <br>
+
+    
+    
+    <div3 id="divThree">
+    
+    
+    
+    </div3>
+    
+    
     
 </html>
+
+
+
+
+
+
+<!--    localstorage:    http://stackoverflow.com/questions/11609376/share-data-between-html-pages#11609448-->

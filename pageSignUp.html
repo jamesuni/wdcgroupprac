@@ -6,19 +6,30 @@
     <head> <link rel="stylesheet" href="mainTheme.css"> 
     
         <meta name="google-signin-scope" content="profile email">
-        <meta name="google-signin-client_id" content="YOUR_CLIENT_ID.apps.googleusercontent.com">
+        <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
         
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src= "JavaScript.js">                                    </script>
         <script src= "Google.js">                                        </script>
-    
+        <script src= "StartSignUp.js">                                   </script>
+
+        <!-- OAuth Client id: 628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com -->
+        <!-- client secret key:  h1SwynAu5qp-aGj2ib6y5BSm  -->
+        
     </head>
-       
-    
+           
     <div1> <h1> Journal Website </h1> </div1>
     
+   
+    <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
+    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+    <input id="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
     
-    <div2>
+     <div2 id="loginBox">
+<!--    <h2> Your Journal </h2>  -->
+    </div2>
+    
+    
         <h2> Account Sign-Up </h2>
     
         <form action="/action_page.php" method="get">
@@ -33,13 +44,15 @@
             <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
             <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
     
-            <button name="name" value="value" type="submit" id="submit"> Signup </button>    
+<!--            <button name="name" value="value" type="submit" id="submit"> Signup </button>    -->
 
         </form>
+            <button name="name" value="value" onclick="onSubmit()" id="submit"> Signup </button>    
+
    
         <div  class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>  <!--  google signin -->
 
-    </div2>
+    
     
 </html>
 
