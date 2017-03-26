@@ -18,15 +18,17 @@
         
     </head>
            
-    <div1> <h1> Journal Website </h1> </div1>
+    <div1 id="titleDiv"> <h1> Journal Website </h1>  </div1>
     
    
     <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
-    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+    <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
     <input id="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
     
+    
+        
      <div2 id="loginBox">
-<!--    <h2> Your Journal </h2>  -->
+    <h2> [Journal Name Here] </h2>  
     </div2>
     
     
@@ -47,10 +49,10 @@
 <!--            <button name="name" value="value" type="submit" id="submit"> Signup </button>    -->
 
         </form>
-            <button name="name" value="value" onclick="onSubmit()" id="submit"> Signup </button>    
+            <button name="name" value="value" onclick="onSubmit()" id="submit"> Signup </button>   
 
    
-        <div  class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>  <!--  google signin -->
+        <div id="googleDiv" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>  <!--  google signin -->
 
     
     
