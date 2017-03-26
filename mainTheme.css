@@ -80,3 +80,28 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
+
+
+/*
+#googleDiv { //working!
+    align-content: center;
+    background: green;
+    
+}
+*/
+
+#titleDiv {
+    /* credit to GenerateCSS.com */
+        text-decoration:none;
+        font-size: 30px;
+        font-family: Georgia;
+        color: black;
+        text-shadow: 5px 5px 0px white, 7px 7px    
+}
+
+#contentDiv
+{
+    
+}
+
+
