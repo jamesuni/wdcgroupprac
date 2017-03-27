@@ -187,6 +187,25 @@ function verifyEmail()
 
         function testSet()
         {
+            //––––––––––––– text that appears when the 'submit' button is pressed
+            document.getElementById("submitStatus").style.background = "white";
+            if (document.getElementById('journalText').value == "") //'null' does not work here!
+                {
+                document.getElementById("submitStatus").style.color = "red";
+                document.getElementById("submitStatus").innerHTML = "Submission error: write something before submiting!";
+                }
+            else
+                {
+                    document.getElementById("submitStatus").style.color = "green";
+                    document.getElementById("submitStatus").innerHTML = "Submission successful! Check your 'History' page to view all your past entries...";
+                }
+            
+
+            
+            
+            
+            
+            
 //            sessionStorage.getItem('content1'); //needed??
             sessionStorage.setItem('content1', document.getElementById('journalText').value);
             
@@ -237,63 +256,78 @@ function verifyEmail()
 
 
 
-//        function gotoNewEntry()
-//        {
-//            
-//        }
+
+
 
         function newTextarea()
         {
         
-        
-            //credit to http://stackoverflow.com/questions/7377399/creating-a-textarea-with-javascript#7377447
-            var div = document.getElementById("divThree");
+//                document.getElementById("submitStatus").style.background = "white";
+//                document.getElementById("submitStatus").style.color = "red";
+//                document.getElementById("submitStatus").innerHTML = "Submission error: write something before submiting!";
             
-            var inputTitle = document.createElement("textarea");
-            var inputJournal = document.createElement("textarea");
+                        //––––––––––––– text that appears when the 'submit' button is pressed
+            if (sessionStorage.getItem('content1') == null)
+                {
+                document.getElementById("submitStatus").style.background = "white";
+                document.getElementById("submitStatus").style.color = "red";
+                document.getElementById("submitStatus").innerHTML = "Submission error: write something before submiting!";
+                }
+            else
+                {
+                    //credit to http://stackoverflow.com/questions/7377399/creating-a-textarea-with-javascript#7377447
+                    var div = document.getElementById("divThree");
+            
+                    var inputTitle = document.createElement("textarea");
+                    var inputJournal = document.createElement("textarea");
             
  
+        
+                    inputJournal.value = sessionStorage.getItem('content1');
+                    inputTitle.value = sessionStorage.getItem('title1');
             
+                    if (sessionStorage.getItem("bold1") == "true")
+                    {
+                        inputJournal.style.fontWeight = "bold";
+                    }
             
-            inputJournal.value = sessionStorage.getItem('content1');
-            inputTitle.value = sessionStorage.getItem('title1');
+                    if (sessionStorage.getItem("italic1") == "true")
+                    {
+                        inputJournal.style.fontStyle = "italic";
+                    }
             
-            if (sessionStorage.getItem("bold1") == "true")
-                {
-                    inputJournal.style.fontWeight = "bold";
-                }
+                    if (sessionStorage.getItem("underline1") == "true")
+                    {
+                        inputJournal.style.textDecoration = "underline";
+                    }
             
-            if (sessionStorage.getItem("italic1") == "true")
-                {
-                    inputJournal.style.fontStyle = "italic";
-                }
-            
-            if (sessionStorage.getItem("underline1") == "true")
-                {
-                    inputJournal.style.textDecoration = "underline";
-                }
-            
-            inputJournal.style.color = sessionStorage.getItem('fontColor1');
-            inputJournal.style.fontSize = sessionStorage.getItem('fontSize1');
-            inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily1');
+                    inputJournal.style.color = sessionStorage.getItem('fontColor1');
+                    inputJournal.style.fontSize = sessionStorage.getItem('fontSize1');
+                    inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily1');
             
             
             
     
             
             
-            inputTitle.cols = "50";
-            inputTitle.rows = "1";
+                    inputTitle.cols = "50";
+                    inputTitle.rows = "1";
             
-            inputJournal.cols = "50";
-            inputJournal.rows = "20";
+                    inputJournal.cols = "50";
+                    inputJournal.rows = "20";
+              
+                    div.appendChild(inputTitle); //appendChild
+                    //            div.insertAdjacentHTML('afterEnd', "\n" );     //not supported on firefox? //need '\n' inserted                                                                   here
+                    div.appendChild(inputJournal);
+                //also need two '\n's inserted here            
+            }
+        
             
-            div.appendChild(inputTitle); //appendChild
-//            div.insertAdjacentHTML('afterEnd', "\n" );     //not supported on firefox? //need '\n' inserted                                                                   here
-            div.appendChild(inputJournal);
-            //also need two '\n's inserted here
             
-//            getNumEntries(); 
+            
+            
+            
+         
         }
 
 
@@ -319,8 +353,8 @@ function verifyEmail()
 //            
 //        }
 
-
-function onSubmit() //not used yet
+        //not used yet
+function onSubmit()
 {
     sessionStorage.setItem('emailText', document.getElementById('emailText').value);
     sessionStorage.setItem('passwordText', document.getElementById('passwordText').value);
