@@ -32,7 +32,10 @@ function sentence() {
             "sock-puppet",
             "pig",
             "family",
-            "computer program"
+            "computer program",
+            "python",
+            "optimist",
+            "hotdog"
         ];
     
     var adverb =
@@ -52,7 +55,9 @@ function sentence() {
             "still",
             "finally",
             "almost",
-            "eternally"
+            "eternally",
+            "sheepishly",
+            "impatiently"
         ];
     
     var adjective =
@@ -82,7 +87,8 @@ function sentence() {
             "crumpled",
             "anacronistic",
             "hopeful",
-            "prudish"
+            "prudish",
+            'orange'
         ];
     
     var verb =
@@ -116,7 +122,9 @@ function sentence() {
         "feeding",
         "corresponding with",
         "calming",
-        "outraging"
+        "outraging",
+        "mystifying",
+        "rolling"
     ];
     
     
