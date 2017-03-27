@@ -3,6 +3,25 @@
 <!DOCTYPE html>
 <html>
     
+    
+   <script type="text/javascript">
+                    
+    //moving this into another file is not working
+function loadLogin() 
+{
+    if (sessionStorage.getItem('emailText') != null)
+    {
+        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+        document.getElementById("loginBox").style.color = "blue";
+    }
+    else {
+        document.getElementById("loginBox").innerHTML = "[Not logged in]";
+    }
+}     
+    window.onload = loadLogin;
+    </script>  
+    
+    
     <head> <link rel="stylesheet" href="mainTheme.css"> 
     
         <meta name="google-signin-scope" content="profile email">
@@ -11,13 +30,14 @@
         <script src="https://apis.google.com/js/platform.js" async defer></script>
         <script src= "JavaScript.js">                                    </script>
         <script src= "Google.js">                                        </script>
-        <script src= "StartSignUp.js">                                   </script>
+        <script src= "loginLoad.js">                                   </script>
 
         <!-- OAuth Client id: 628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com -->
         <!-- client secret key:  h1SwynAu5qp-aGj2ib6y5BSm  -->
         
     </head>
-           
+    
+    <div id="loginBox">          </div>
     <div1 id="titleDiv"> <h1> Journal Website </h1>  </div1>
     
    
@@ -27,10 +47,7 @@
     
     
         
-     <div2 id="loginBox">
-    <h2> [Journal Name Here] </h2>  
-    </div2>
-    
+
     
         <h2> Account Sign-Up </h2>
     
@@ -49,8 +66,9 @@
 <!--            <button name="name" value="value" type="submit" id="submit"> Signup </button>    -->
 
         </form>
-            <button name="name" value="value" onclick="onSubmit()" id="submit"> Signup </button>   
+            <button name="name" value="value" onclick="onSubmit();loadLogin();" id="submit"> Signup </button>   
 
+        <div id="submitStatus">  </div>
    
         <div id="googleDiv" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>  <!--  google signin -->
 

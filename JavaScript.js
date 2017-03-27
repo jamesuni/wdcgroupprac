@@ -4,7 +4,7 @@
 
 function verifyEmail()
  {
-                        
+              
             var stringEmail = document.getElementById('emailText').value;
             var containsSign = stringEmail.search('@');
             var containsDot = stringEmail.search(/\./); //just .search('.') does not work – '.' is Regular Expression for 'any', so if the string contains anything, it will return true
@@ -14,18 +14,20 @@ function verifyEmail()
                      document.getElementById('emailText').style.borderColor="red"
                      document.getElementById('emailText').value = "";
                      document.getElementById('emailText').placeholder = "(must contain '@')";
+                     return false;
                 }
             else if (containsDot == -1)
                 {
                      document.getElementById('emailText').style.borderColor="red"
                      document.getElementById('emailText').value = "";
                      document.getElementById('emailText').placeholder = "(must contain '.')";
+                     return false;
                 }
             else
             {
                  document.getElementById('emailText').style.borderColor="blue"
-            }
-            
+                 return true;
+            }     
 }
 
 
@@ -271,7 +273,7 @@ function verifyEmail()
                 {
                 document.getElementById("submitStatus").style.background = "white";
                 document.getElementById("submitStatus").style.color = "red";
-                document.getElementById("submitStatus").innerHTML = "Submission error: write something before submiting!";
+                document.getElementById("submitStatus").innerHTML = "Submission error: you don't have any past journal entries!";
                 }
             else
                 {
@@ -356,9 +358,45 @@ function verifyEmail()
         //not used yet
 function onSubmit()
 {
-    sessionStorage.setItem('emailText', document.getElementById('emailText').value);
-    sessionStorage.setItem('passwordText', document.getElementById('passwordText').value);
+    
+    document.getElementById("submitStatus").style.background = "white";
+//    alert(document.getElementById("paswordText").value); //doesn't work! because it is password type?
+    
+//    Boolean isEmailValid = verifyEmail; //causing error
+    var isEmailValid = verifyEmail; //NOT WORKING. WHY?
+    
+    if (document.getElementById("emailText").value == "")
+    {
+                document.getElementById("submitStatus").style.color = "red";
+                document.getElementById("submitStatus").innerHTML = "Submission error: enter an email address!";
+    }
+                //the fact it is type 'password' is causing it to block actions, like 'alert(pasword)'  !
+//    else if (document.getElementById("paswordText").value == "")
+//    {
+//                document.getElementById("submitStatus").style.color = "red";
+//                document.getElementById("submitStatus").innerHTML = "Submission error: enter your password";
+//    }
+    else if (isEmailValid == false)   //NOT WORKING. WHY?
+        {
+                document.getElementById("submitStatus").style.color = "red";
+                document.getElementById("submitStatus").innerHTML = "Submission error: email address was not valid.";
+        }
+    else 
+    {
+                sessionStorage.setItem('emailText', document.getElementById('emailText').value);
+
+                document.getElementById("submitStatus").style.color = "green";
+                document.getElementById("submitStatus").innerHTML = "Submission successful! You are now logged in.";
+//                document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+
+    }
+    
+    
 }
+
+
+
+
 
 
 

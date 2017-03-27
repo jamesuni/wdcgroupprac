@@ -1,20 +1,43 @@
 <!DOCTYPE html>
 <html>
     
+    
+    <script type="text/javascript">             
+    //moving this into another file is not working
+function loadLogin() 
+{
+    if (sessionStorage.getItem('emailText') != null)
+    {
+        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+        document.getElementById("loginBox").style.color = "blue";
+    }
+    else {
+        document.getElementById("loginBox").innerHTML = "[Not logged in]";
+    }
+}     
+    window.onload = loadLogin;
+    </script>
+    
+    
+    
     <head>
             <link rel="stylesheet" href="mainTheme.css">
             <script src= "JavaScript.js">  </script>
+            <script src= "loginLoad.js">   </script>
+
     </head>
  
     
+<div id="loginBox">            </div>
 <div1 id="titleDiv"> <h1> Journal Website </h1> </div1>
    
+    
 <div2>
     <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
     <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
     <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value= "+" />
-     <h2> [Journal Name Here] </h2>  
 </div2>
+    
 
 
 

@@ -118,9 +118,12 @@ background: #3cb0fd;
         text-shadow: 5px 5px 0px white, 7px 7px    
 }
 
-#contentDiv
+#loginBox
 {
-    
+    font-size: 24px;
+    font-style: italic;
+    color: lightblue; /* changed to blue when login occurs */
+    background: white;
 }
 
 
