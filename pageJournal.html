@@ -1,108 +1,103 @@
 <!DOCTYPE html>
 <html>
-    
-    
-    <script type="text/javascript">             
-    //moving this into another file is not working
-function loadLogin() 
-{
-    if (sessionStorage.getItem('emailText') != null)
-    {
-        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-        document.getElementById("loginBox").style.color = "blue";
-    }
-    else {
-        document.getElementById("loginBox").innerHTML = "[Not logged in]";
-    }
-}     
-    window.onload = loadLogin;
-    </script>
-    
-    
-    
     <head>
+            <meta charset="utf-8">
+            <title>Journal Website - Journal</title>
             <link rel="stylesheet" href="mainTheme.css">
-            <script src= "JavaScript.js">  </script>
-            <script src= "loginLoad.js">   </script>
-            <script src= "Random.js">   </script>
+            <script src= "JavaScript.js"></script>
+            <script src= "loginLoad.js"></script>
+            <script src= "Random.js"></script>
+
+            <script type="text/javascript">
+            //moving this into another file is not working
+                function loadLogin()
+                {
+                    if (sessionStorage.getItem('emailText') != null)
+                    {
+                        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+                        document.getElementById("loginBox").style.color = "blue";
+                    }
+                    else {
+                        document.getElementById("loginBox").innerHTML = "[Not logged in]";
+                    }
+                }
+                    window.onload = loadLogin;
+            </script>
     </head>
- 
-    
-<div id="loginBox">            </div>
-<div1 id="titleDiv"> <h1> Journal Website </h1> </div1>
-   
-    
-<div2>
-    <input id="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
-    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
-    <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value= "+" />
-</div2>
-    
+
+    <body>
+        <div id="loginBox"></div>
+        <h1 id="titleH"> Journal Website </h1>
+
+
+    <div2>
+        <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
+        <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+        <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value= "+" />
+    </div2>
 
 
 
-    
-    
-           <h2>Write journal entry: </h2>  <br>  
-    <button onclick="boldText()" id="buttonBold"> B </button>
-    <button onclick="italicText()" id="buttonItalic">I</button>
-    <button onclick="underlineText()" id="buttonUnderline">U</button>
 
-        <select id="textFont" onchange = "chooseFont()">
-            <option value="Times New Roman">Times New Roman</option>
-            <option value="Arial">Arial </option>
-            <option value="Courier">Courier</option>
-            <option value="Verdana"> Verdana</option>
-            <option value="Impact"> Impact</option>
-        </select> 
-    
-        <select id="textSize" onchange = "chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
-            <option value="12px"> 10pt </option>
-            <option value="12px" selected> 12pt </option>
-            <option value="14px"> 14pt </option>
-            <option value="16px"> 16pt </option>
-            <option value="18px"> 18pt </option>
-            <option value="20px"> 20pt </option>
-            <option value="22px"> 22pt </option>
-            <option value="24px"> 24pt </option>
-            <option value="26px"> 26pt </option>
-        </select> 
-    
-        <select id="textColor" onchange = "chooseColor()">
-            <option value="black" > Black </option> <!-- it is impossible to style <option> elements -->
-            <option value= "blue" > Blue </option>
-            <option value="red"   > Red </option>
-            <option value="green" > Green  </option>
-            <option value="yellow" >Yellow  </option>
-            <option value="pink"  > Pink  </option>
-            <option value="cyan" >  Cyan  </option>
-            <option value="grey" >  Grey  </option>
-            <option value="orange" >Orange  </option>
-            <option value="brown" > Brown  </option>
-            <option value="white" > White  </option>
-            <option value="beige" > Beige  </option>
-        </select> 
-    
-    <form action="pageHistory.html" method="get">
-    
-     <textarea placeholder= "Title:" onclick= "titleTextClick()" rows="1" cols="50" id="titleText" ></textarea> <br>
-        
-    <textarea onclick= "journalTextClick()" placeholder="What happened today?" 
-              rows="20" cols="50" id="journalText" ></textarea> <br>   
-        
 
-<!--    <button  type="submit" id="viewPast"> View Past Entries </button>    -->
-    </form>
-        <button id="submit" onclick="testSet()"> Submit Entry </button>
-        <div id="submitStatus"> </div>
-    
-    
-    <br>
-    <button onclick="sentence()" id="randomButton"> Writer's block? Try this random sentence generator... </button>
-    <div id = "randomBox"> </div>
 
-    
+               <h2>Write journal entry: </h2>  <br>
+        <button onclick="boldText()" id="buttonBold"> B </button>
+        <button onclick="italicText()" id="buttonItalic">I</button>
+        <button onclick="underlineText()" id="buttonUnderline">U</button>
 
-    
-        
+            <select id="textFont" onchange = "chooseFont()">
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial </option>
+                <option value="Courier">Courier</option>
+                <option value="Verdana"> Verdana</option>
+                <option value="Impact"> Impact</option>
+            </select>
+
+            <select id="textSize" onchange = "chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
+                <option value="12px"> 10pt </option>
+                <option value="12px" selected> 12pt </option>
+                <option value="14px"> 14pt </option>
+                <option value="16px"> 16pt </option>
+                <option value="18px"> 18pt </option>
+                <option value="20px"> 20pt </option>
+                <option value="22px"> 22pt </option>
+                <option value="24px"> 24pt </option>
+                <option value="26px"> 26pt </option>
+            </select>
+
+            <select id="textColor" onchange = "chooseColor()">
+                <option value="black" > Black </option> <!-- it is impossible to style <option> elements -->
+                <option value= "blue" > Blue </option>
+                <option value="red"   > Red </option>
+                <option value="green" > Green  </option>
+                <option value="yellow" >Yellow  </option>
+                <option value="pink"  > Pink  </option>
+                <option value="cyan" >  Cyan  </option>
+                <option value="grey" >  Grey  </option>
+                <option value="orange" >Orange  </option>
+                <option value="brown" > Brown  </option>
+                <option value="white" > White  </option>
+                <option value="beige" > Beige  </option>
+            </select>
+
+        <form action="pageHistory.html" method="get">
+
+         <textarea placeholder= "Title:" onclick= "titleTextClick()" rows="1" cols="50" id="titleText" ></textarea> <br>
+
+        <textarea onclick= "journalTextClick()" placeholder="What happened today?"
+                  rows="20" cols="50" id="journalText" ></textarea> <br>
+
+
+    <!--    <button  type="submit" id="viewPast"> View Past Entries </button>    -->
+        </form>
+            <button id="submit" onclick="testSet()"> Submit Entry </button>
+            <div id="submitStatus"> </div>
+
+
+        <br>
+        <button onclick="sentence()" id="randomButton"> Writer's block? Try this random sentence generator... </button>
+        <div id = "randomBox"> </div>
+
+    </body>
 </html>

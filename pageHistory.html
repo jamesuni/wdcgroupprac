@@ -1,59 +1,56 @@
 <!DOCTYPE html>
 <html>
-    
-    <script type="text/javascript">
-                    
-    //moving this into another file is not working
-function loadLogin() 
-{
-    if (sessionStorage.getItem('emailText') != null)
-    {
-        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-        document.getElementById("loginBox").style.color = "blue";
-    }
-    else {
-        document.getElementById("loginBox").innerHTML = "[Not logged in]";
-    }
-}     
-    window.onload = loadLogin;
-    </script>
-    
-    <head> 
+
+    <head>
+        <meta charset="utf-8">
+        <title>Journal Website - History</title>
         <link rel="stylesheet" href="mainTheme.css">
-        <script src= "JavaScript.js">  </script>
-        <script src= "loginLoad.js">   </script>
+        <script src= "JavaScript.js"></script>
+        <script src= "loginLoad.js"></script>
+
+        <script type="text/javascript">
+
+                //moving this into another file is not working
+            function loadLogin()
+            {
+                if (sessionStorage.getItem('emailText') != null)
+                {
+                    document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+                    document.getElementById("loginBox").style.color = "blue";
+                }
+                else {
+                    document.getElementById("loginBox").innerHTML = "[Not logged in]";
+                }
+            }
+                window.onload = loadLogin;
+        </script>
     </head>
-    
-    <div id="loginBox"></div>
-    <div1 id="titleDiv"> <h1> Journal Website </h1> </div1>
-    
+    <body>
 
-    <input id="mainButtonSelected" type="button" onclick="location.href='pageHistory.html';" value= "History"/>
-    <input id="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
-    <input id="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
-     
+      <div id="loginBox"></div>
+      <h1 id="titleH"> Journal Website </h1>
 
-        
-        <h2> View Past Journal Entries </h2> <br> <br>
-<!--        <a href="pageJournal.html">+ Write new entry</a>-->
 
-    
-    
+      <input id="mainButtonSelected" type="button" onclick="location.href='pageHistory.html';" value= "History"/>
+      <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
+      <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
 
-<!--            <button onClick ="href='pageJournal.html'" id="testContent1"> Write new entry </button>-->
-            <button onclick= "newTextarea()"  id="testContent1"> Load past entries </button> <br> <br>
 
-    
-    
-        <div id="submitStatus"> </div> <!--where error messages are loaded into -->
-        <div id= "divThree"> </div>    <!--where the texareas are loaded into -->
-    
-    
-    
-    
-    
-    
-    
+
+          <h2> View Past Journal Entries </h2> <br> <br>
+  <!--        <a href="pageJournal.html">+ Write new entry</a>-->
+
+
+
+
+  <!--            <button onClick ="href='pageJournal.html'" id="testContent1"> Write new entry </button>-->
+              <button onclick= "newTextarea()"  id="testContent1"> Load past entries </button> <br> <br>
+
+
+
+          <div id="submitStatus"> </div> <!--where error messages are loaded into -->
+          <div id= "divThree"> </div>    <!--where the texareas are loaded into -->
+    </body>
 </html>
 
 

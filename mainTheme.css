@@ -5,7 +5,7 @@
 
 
 html {
-    background: grey;
+    background-color: gray;
     text-align: center; /* by default, text should be 'scaled' and 'centered' */
     font-family: arial;
     }
@@ -14,7 +14,7 @@ html {
 #submit {
        background-color: #ccc;
     background-image: url(journal.jpg)
-    
+
 }
 */
 
@@ -52,7 +52,7 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
 
 
 /* credit to http://css3buttongenerator.com/ */
-#mainButton {
+.mainButton {
   background: #000000;
   background-image: -webkit-linear-gradient(top, #000000, #757575);
   background-image: -moz-linear-gradient(top, #000000, #757575);
@@ -71,7 +71,7 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
   text-decoration: none;
 }
 
-#mainButton:hover {
+.mainButton:hover {
   background: #3cb0fd;
   background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
   background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
@@ -105,24 +105,24 @@ background: #3cb0fd;
 #googleDiv { //working!
     align-content: center;
     background: green;
-    
+
 }
 */
 
-#titleDiv {
+#titleH {
     /* credit to GenerateCSS.com */
         text-decoration:none;
-        font-size: 30px;
+        font-size: 60px;
         font-family: Georgia;
         color: black;
-        text-shadow: 5px 5px 0px white, 7px 7px    
+        text-shadow: 5px 5px 0px white, 7px 7px
 }
 
 #loginBox
 {
     font-size: 24px;
     font-style: italic;
-    color: lightblue; /* changed to blue when login occurs */
+    color: #4286f4; /* changed to blue when login occurs */
     background: white;
 }
 
@@ -163,5 +163,3 @@ background: #3cb0fd;
     border-radius: 60px;
 }
 */
-
-
