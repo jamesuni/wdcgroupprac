@@ -403,16 +403,28 @@ function onSubmit()
 
 
 
-
-
-
+       
 
                 function loadLogin()
                 {
                     if (sessionStorage.getItem('emailText') != null)
                     {
-                        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+                        document.getElementById("loginBox").innerHTML = "Logged in as: [" + sessionStorage.getItem('emailText') + "]";
                         document.getElementById("loginBox").style.color = "blue";
+                        
+                        
+                        var element = document.createElement("button");
+                        element.innerText = "Logout";
+                        element.id = "logout";
+                        element.onclick = function() { 
+                            sessionStorage.removeItem("emailText");
+                            sessionStorage.removeItem("passwordText");
+                            window.location.reload(false);
+                        };
+                        var foo = document.getElementById("loginBox");
+                        foo.appendChild(element);
+                        
+                        
                     }
                     else {
                         document.getElementById("loginBox").innerHTML = "[Not logged in]";

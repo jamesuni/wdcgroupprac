@@ -125,7 +125,7 @@ background: #3cb0fd;
 
 
 /* ––––––––––giving all the small buttons the same style as the large buttons */
-#testContent1, #submit, #randomButton
+#testContent1, #submit, #randomButton, #logout
 {
     background: black;
     color:white;
@@ -134,7 +134,7 @@ background: #3cb0fd;
 }
 
 
-#testContent1:hover, #submit:hover, #randomButton:hover
+#testContent1:hover, #submit:hover, #randomButton:hover, #logout:hover
 {
     background: #3cb0fd;
     border: solid #000000 2px;

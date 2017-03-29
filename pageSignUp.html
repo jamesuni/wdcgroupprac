@@ -14,29 +14,11 @@
         <script src= "Google.js"></script>
         <script src= "loginLoad.js"></script>
 
-        <!-- OAuth Client id: 628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com -->
-        <!-- client secret key:  h1SwynAu5qp-aGj2ib6y5BSm  -->
-
-        <script type="text/javascript">
-
-         //moving this into another file is not working
-             function loadLogin()
-             {
-                 if (sessionStorage.getItem('emailText') != null)
-                 {
-                     document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-                     document.getElementById("loginBox").style.color = "blue";
-                 }
-                 else {
-                     document.getElementById("loginBox").innerHTML = "[Not logged in]";
-                 }
-             }
-                 window.onload = loadLogin;
-         </script>
-
+        
     </head>
-    <body>
-        <div id="loginBox"></div>
+    <body onload = "loadLogin()">
+        
+        <p id="loginBox">  </p>
         <h1 id="titleH"> Journal Website </h1>
 
 
@@ -62,7 +44,6 @@
             <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
             <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
 
-<!--            <button name="name" value="value" type="submit" id="submit"> Signup </button>    -->
 
         </form>
             <button name="name" value="value" onclick="onSubmit();loadLogin();" id="submit"> Signup </button>
