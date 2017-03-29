@@ -186,23 +186,42 @@ function verifyEmail()
         }
 
 
-//        function numJournalEntries
-//        { 
-//            var numEntires = 0;
-//            for (int i = 1; i < 10; i++)
-//                {
-//                    if (sessionStorage.getItem(toString(i)) == null)
-//                        {
-//                            numEntries++;
-//                        }
-//                }
-//            return numEntries;
-//        }
-//    
+
+
+
+
+
+
+
+
+
+
+        //returns the number of journal entries 
+        function getNumEntries()
+        {
+            var numEntries = 0;
+            for (i = 1; i < 20; i++) //note is just 'i = 1' not 'var i = i'
+                {
+                    if (sessionStorage.getItem(i.toString()) != null)
+                        {
+                            numEntries++;
+                        }
+                }
+            return numEntries;
+        }
+
 
 
         function testSet()
         {
+             
+            //works out how many entries there are, then + 1 to get to an empty place. 
+            
+            var position = getNumEntries() + 1;
+            var posName = position.toString();
+
+                        
+            
             //––––––––––––– text that appears when the 'submit' button is pressed
             document.getElementById("submitStatus").style.background = "white";
             if (document.getElementById('journalText').value == "") //'null' does not work here!
@@ -213,54 +232,52 @@ function verifyEmail()
             else
                 {
                     document.getElementById("submitStatus").style.color = "green";
-                    document.getElementById("submitStatus").innerHTML = "Submission successful! Check your 'History' page to view all your past entries...";
-                }
+                    document.getElementById("submitStatus").innerHTML = "Submission successful! Total journal entries: " + posName;
+                    
+                    
+                    sessionStorage.setItem(posName, document.getElementById('journalText').value);                
             
-            //1. 'content1'-> '1'
+                        if (document.getElementById('titleText').value == "")
+                        {
+                            sessionStorage.setItem('title' + posName, getDate());
+                        }
+                        else
+                        {
+                            sessionStorage.setItem('title'  + posName, document.getElementById('titleText').value);
+                        }
             
-//            sessionStorage.getItem('content1'); //needed??
-            sessionStorage.setItem('content1', document.getElementById('journalText').value);
+                        if (document.getElementById('journalText').style.fontWeight == "bold")
+                        {
+                            sessionStorage.setItem("bold"  + posName, "true");
+                        }
+                        else
+                        {
+                            sessionStorage.setItem("bold"  + posName, "false");
+                        }
             
-            if (document.getElementById('titleText').value == "")
-                {
-                    sessionStorage.setItem('title1', getDate());
-                }
-            else
-                {
-                    sessionStorage.setItem('title1', document.getElementById('titleText').value);
-                }
+                        if (document.getElementById('journalText').style.fontStyle == "italic")
+                        {
+                            sessionStorage.setItem("italic" + posName, "true");
+                        }
+                        else
+                        {
+                            sessionStorage.setItem("italic"  + posName, "false");
+                        }
             
-            if (document.getElementById('journalText').style.fontWeight == "bold")
-                {
-                    sessionStorage.setItem("bold1", "true");
+                        if (document.getElementById('journalText').style.textDecoration == "underline")
+                        {
+                            sessionStorage.setItem("underline"  + posName, "true");
+                        }
+                        else
+                        {
+                            sessionStorage.setItem("underline"  + posName, "false");
+                        }
                 }
-            else
-                {
-                  sessionStorage.setItem("bold1", "false");
-                }
+        
             
-            if (document.getElementById('journalText').style.fontStyle == "italic")
-                {
-                    sessionStorage.setItem("italic1", "true");
-                }
-            else
-                {
-                  sessionStorage.setItem("italic1", "false");
-                }
-            
-            if (document.getElementById('journalText').style.textDecoration == "underline")
-                {
-                    sessionStorage.setItem("underline1", "true");
-                }
-            else
-                {
-                  sessionStorage.setItem("underline1", "false");
-                }
-            
-            
-            sessionStorage.setItem("fontColor1",  document.getElementById('journalText').style.color);
-            sessionStorage.setItem("fontSize1",   document.getElementById('journalText').style.fontSize);
-            sessionStorage.setItem("fontFamily1", document.getElementById('journalText').style.fontFamily);
+            sessionStorage.setItem("fontColor"  + posName,  document.getElementById('journalText').style.color);
+            sessionStorage.setItem("fontSize"  + posName,   document.getElementById('journalText').style.fontSize);
+            sessionStorage.setItem("fontFamily"  + posName, document.getElementById('journalText').style.fontFamily);
 
             
         }
@@ -268,17 +285,12 @@ function verifyEmail()
 
 
 
-
-
         function newTextarea()
         {
-        
-//                document.getElementById("submitStatus").style.background = "white";
-//                document.getElementById("submitStatus").style.color = "red";
-//                document.getElementById("submitStatus").innerHTML = "Submission error: write something before submiting!";
             
-                        //––––––––––––– text that appears when the 'submit' button is pressed
-            if (sessionStorage.getItem('content1') == null)
+                
+            //––––––––––––– text that appears when the 'submit' button is pressed
+            if (sessionStorage.getItem('1') == null)
                 {
                 document.getElementById("submitStatus").style.background = "white";
                 document.getElementById("submitStatus").style.color = "red";
@@ -287,51 +299,56 @@ function verifyEmail()
             else
                 {
                     //credit to http://stackoverflow.com/questions/7377399/creating-a-textarea-with-javascript#7377447
-                    var div = document.getElementById("divThree");
+                    
+                    var numEntries = getNumEntries();
+
+                     for (i = 1; i <= numEntries; i++)
+                     {
+                        var div = document.getElementById("divThree");
             
-                    var inputTitle = document.createElement("textarea");
-                    var inputJournal = document.createElement("textarea");
+                        var inputTitle = document.createElement("textarea");
+                        var inputJournal = document.createElement("textarea");
             
  
         
-                    inputJournal.value = sessionStorage.getItem('content1');
-                    inputTitle.value = sessionStorage.getItem('title1');
+                        inputJournal.value = sessionStorage.getItem(i.toString());
+                        inputTitle.value = sessionStorage.getItem('title' + i.toString());
             
-                    if (sessionStorage.getItem("bold1") == "true")
-                    {
-                        inputJournal.style.fontWeight = "bold";
-                    }
+                        if (sessionStorage.getItem("bold" + i.toString()) == "true")
+                        {
+                            inputJournal.style.fontWeight = "bold";
+                        }
             
-                    if (sessionStorage.getItem("italic1") == "true")
-                    {
-                        inputJournal.style.fontStyle = "italic";
-                    }
+                        if (sessionStorage.getItem("italic" + i.toString()) == "true")
+                        {
+                            inputJournal.style.fontStyle = "italic";
+                        }
             
-                    if (sessionStorage.getItem("underline1") == "true")
-                    {
-                        inputJournal.style.textDecoration = "underline";
-                    }
+                        if (sessionStorage.getItem("underline" + i.toString()) == "true")
+                        {
+                            inputJournal.style.textDecoration = "underline";
+                        }
             
-                    inputJournal.style.color = sessionStorage.getItem('fontColor1');
-                    inputJournal.style.fontSize = sessionStorage.getItem('fontSize1');
-                    inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily1');
+                        inputJournal.style.color = sessionStorage.getItem('fontColor'  + i.toString());
+                        inputJournal.style.fontSize = sessionStorage.getItem('fontSize'  + i.toString());
+                        inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily'  + i.toString());
+        
+                         
+                        inputTitle.cols = "50";
+                        inputTitle.rows = "1";
             
-            
-            
-    
-            
-            
-                    inputTitle.cols = "50";
-                    inputTitle.rows = "1";
-            
-                    inputJournal.cols = "50";
-                    inputJournal.rows = "20";
+                        inputJournal.cols = "50";
+                        inputJournal.rows = "20";
               
-                    div.appendChild(inputTitle); //appendChild
-                    //            div.insertAdjacentHTML('afterEnd', "\n" );     //not supported on firefox? //need '\n' inserted                                                                   here
-                    div.appendChild(inputJournal);
-                //also need two '\n's inserted here            
-            }
+                        div.appendChild(inputTitle); 
+                
+                        div.appendChild(inputJournal);
+            
+                    }//for
+                    
+                    
+                      
+            }//else
         
             
 
@@ -343,25 +360,9 @@ function verifyEmail()
 
 
 
-            //not working
-//    function getNumEntries()
-//        {
-//             var entries = 1;
-//             var currentString = 'content' + entries.toString;
-//            
-//            while (sessionStorage.getItem(currentString) != null)
-//            {
-//                entries++;
-//                currentString = 'content' + entries.toString;
-//            }
-//            
-//            alert("entries: " + entries);
-//            
-//            
-//            
-//        }
 
-        //not used yet
+
+        
 function onSubmit()
 {
     
@@ -393,12 +394,13 @@ function onSubmit()
 
                 document.getElementById("submitStatus").style.color = "green";
                 document.getElementById("submitStatus").innerHTML = "Submission successful! You are now logged in.";
-//                document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-
     }
     
     
 }
+
+
+
 
 
 
