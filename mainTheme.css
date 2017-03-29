@@ -50,14 +50,11 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
 
 
 
+/* use class for multiple elements to style, not IDs e.g. class="mainButton" not id="mainButton"*/
 
 /* credit to http://css3buttongenerator.com/ */
 .mainButton {
   background: #000000;
-  background-image: -webkit-linear-gradient(top, #000000, #757575);
-  background-image: -moz-linear-gradient(top, #000000, #757575);
-  background-image: -ms-linear-gradient(top, #000000, #757575);
-  background-image: -o-linear-gradient(top, #000000, #757575);
   background-image: linear-gradient(to bottom, #000000, #757575);
   -webkit-border-radius: 60;
   -moz-border-radius: 60;
@@ -73,20 +70,12 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
 
 .mainButton:hover {
   background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   text-decoration: none;
 }
 
 #mainButtonSelected { /* same as mainButton:hover */
 background: #3cb0fd;
-  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
-  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
   background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
   -webkit-border-radius: 60;
   -moz-border-radius: 60;

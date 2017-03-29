@@ -186,6 +186,20 @@ function verifyEmail()
         }
 
 
+//        function numJournalEntries
+//        { 
+//            var numEntires = 0;
+//            for (int i = 1; i < 10; i++)
+//                {
+//                    if (sessionStorage.getItem(toString(i)) == null)
+//                        {
+//                            numEntries++;
+//                        }
+//                }
+//            return numEntries;
+//        }
+//    
+
 
         function testSet()
         {
@@ -202,11 +216,7 @@ function verifyEmail()
                     document.getElementById("submitStatus").innerHTML = "Submission successful! Check your 'History' page to view all your past entries...";
                 }
             
-
-            
-            
-            
-            
+            //1. 'content1'-> '1'
             
 //            sessionStorage.getItem('content1'); //needed??
             sessionStorage.setItem('content1', document.getElementById('journalText').value);
@@ -214,7 +224,6 @@ function verifyEmail()
             if (document.getElementById('titleText').value == "")
                 {
                     sessionStorage.setItem('title1', getDate());
-
                 }
             else
                 {
@@ -325,11 +334,8 @@ function verifyEmail()
             }
         
             
+
             
-            
-            
-            
-         
         }
 
 
@@ -398,6 +404,18 @@ function onSubmit()
 
 
 
+
+                function loadLogin()
+                {
+                    if (sessionStorage.getItem('emailText') != null)
+                    {
+                        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
+                        document.getElementById("loginBox").style.color = "blue";
+                    }
+                    else {
+                        document.getElementById("loginBox").innerHTML = "[Not logged in]";
+                    }
+                }
 
 
 

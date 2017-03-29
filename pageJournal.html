@@ -1,44 +1,22 @@
 <!DOCTYPE html>
 <html>
-    <head>
+    <head >
             <meta charset="utf-8">
             <title>Journal Website - Journal</title>
             <link rel="stylesheet" href="mainTheme.css">
             <script src= "JavaScript.js"></script>
             <script src= "loginLoad.js"></script>
-            <script src= "Random.js"></script>
-
-            <script type="text/javascript">
-            //moving this into another file is not working
-                function loadLogin()
-                {
-                    if (sessionStorage.getItem('emailText') != null)
-                    {
-                        document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-                        document.getElementById("loginBox").style.color = "blue";
-                    }
-                    else {
-                        document.getElementById("loginBox").innerHTML = "[Not logged in]";
-                    }
-                }
-                    window.onload = loadLogin;
-            </script>
+            <script src= "Random.js"></script>    
     </head>
 
-    <body>
-        <div id="loginBox"></div>
+    <body onload = "loadLogin()">
+       
+        <p id="loginBox">  </p>
         <h1 id="titleH"> Journal Website </h1>
 
-
-    <div2>
         <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
         <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
         <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value= "+" />
-    </div2>
-
-
-
-
 
 
                <h2>Write journal entry: </h2>  <br>

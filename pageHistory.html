@@ -8,26 +8,10 @@
         <script src= "JavaScript.js"></script>
         <script src= "loginLoad.js"></script>
 
-        <script type="text/javascript">
-
-                //moving this into another file is not working
-            function loadLogin()
-            {
-                if (sessionStorage.getItem('emailText') != null)
-                {
-                    document.getElementById("loginBox").innerHTML = "Logged in as: '" + sessionStorage.getItem('emailText') + "'";
-                    document.getElementById("loginBox").style.color = "blue";
-                }
-                else {
-                    document.getElementById("loginBox").innerHTML = "[Not logged in]";
-                }
-            }
-                window.onload = loadLogin;
-        </script>
     </head>
-    <body>
+    <body onload = "loadLogin()">
 
-      <div id="loginBox"></div>
+        <p id="loginBox">  </p>
       <h1 id="titleH"> Journal Website </h1>
 
 
