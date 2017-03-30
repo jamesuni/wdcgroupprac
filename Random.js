@@ -1,17 +1,10 @@
-
-//The <adjective> <noun> was <verb ending in -ing>
-
-
-
-
-
-//why not just have massive javascript arrays?
+/* jshint browser: true */
 
 
 function sentence() {
-    
-    var noun =
-        [
+    "use strict";
+
+    var noun = [
             "cat",
             "mouse",
             "bicycle",
@@ -36,10 +29,9 @@ function sentence() {
             "python",
             "optimist",
             "hotdog"
-        ];
-    
-    var adverb =
-        [
+        ],
+
+        adverb = [
             "reluctantly",
             "carefully",
             "heroically",
@@ -58,10 +50,9 @@ function sentence() {
             "eternally",
             "sheepishly",
             "impatiently"
-        ];
-    
-    var adjective =
-        [
+        ],
+
+        adjective = [
             "funny",
             "smelly",
             "dead",
@@ -89,77 +80,71 @@ function sentence() {
             "hopeful",
             "prudish",
             'orange'
-        ];
-    
-    var verb =
-    [
-        "freezing",
-        "dropping",
-        "failing",
-        "drowning",
-        "flying",
-        "running",
-        "cooking",
-        "forgetting",
-        "remembering",
-        "drinking",
-        "scaring",
-        "deep-frying",
-        "astounding",
-        "contemplating",
-        "heckling",
-        "laughing at",
-        "avoiding",
-        "comforting",
-        "spending",
-        "gift-wrapping",
-        "unpacking",
-        "fobbing off",
-        "politely ignoring",
-        "pretending to be",
-        "treading on",
-        "programming",
-        "feeding",
-        "corresponding with",
-        "calming",
-        "outraging",
-        "mystifying",
-        "rolling"
-    ];
-    
-    
-//     Math.floor((Math.random() * 100) + 1);
-//
-//The result could be: 52 
-//    
-    
-//    var nounRand = ;
-//    var nounRandTwo = );
-//    
-//    alert(nounRand + " vs " + nounRandTwo);
+        ],
 
-    var selectNoun =    noun[Math.floor((Math.random()) * noun.length)];
-    var selectNounTwo = noun[Math.floor((Math.random()) * noun.length)];
+        verb = [
+            "freezing",
+            "dropping",
+            "failing",
+            "drowning",
+            "flying",
+            "running",
+            "cooking",
+            "forgetting",
+            "remembering",
+            "drinking",
+            "scaring",
+            "deep-frying",
+            "astounding",
+            "contemplating",
+            "heckling",
+            "laughing at",
+            "avoiding",
+            "comforting",
+            "spending",
+            "gift-wrapping",
+            "unpacking",
+            "fobbing off",
+            "politely ignoring",
+            "pretending to be",
+            "treading on",
+            "programming",
+            "feeding",
+            "corresponding with",
+            "calming",
+            "outraging",
+            "mystifying",
+            "rolling"
+        ],
 
-    var selectAdjective =    adjective[ Math.floor((Math.random()) * adjective.length) ];
-    var selectAdjectiveTwo = adjective[ Math.floor((Math.random()) * adjective.length) ];
 
-    var selectAdverb = adverb[ Math.floor((Math.random()) * adverb.length) ];
-    
-    var selectVerb = verb[ Math.floor((Math.random()) * verb.length) ];  
-    
-    var answer = "\"The " + selectAdjective + " " + selectNoun + " was " + selectAdverb + " " + selectVerb + " the " + selectAdjectiveTwo + " " + selectNounTwo + " when...\"";
-    
-//    alert(answer);
-    
+        //     Math.floor((Math.random() * 100) + 1);
+        //
+        //The result could be: 52 
+        //    
+
+        //    var nounRand = ;
+        //    var nounRandTwo = );
+        //    
+        //    alert(nounRand + " vs " + nounRandTwo);
+
+        selectNoun = noun[Math.floor((Math.random()) * noun.length)],
+        selectNounTwo = noun[Math.floor((Math.random()) * noun.length)],
+
+        selectAdjective = adjective[Math.floor((Math.random()) * adjective.length)],
+        selectAdjectiveTwo = adjective[Math.floor((Math.random()) * adjective.length)],
+
+        selectAdverb = adverb[Math.floor((Math.random()) * adverb.length)],
+
+        selectVerb = verb[Math.floor((Math.random()) * verb.length)],
+
+        answer = "\"The " + selectAdjective + " " + selectNoun + " was " + selectAdverb + " " + selectVerb + " the " + selectAdjectiveTwo + " " + selectNounTwo + " when...\"";
+
+    //    alert(answer);
+
     document.getElementById('randomBox').innerHTML = answer;
-    
-//    return 
-    
-    
+
+    //    return 
+
+
 }
-
-
-
-
-

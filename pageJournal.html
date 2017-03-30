@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
-    <head >
-            <meta charset="utf-8">
-            <title>Journal Website - Journal</title>
-            <link rel="stylesheet" href="mainTheme.css">
-            <script src= "JavaScript.js"></script>
-            <script src= "loginLoad.js"></script>
-            <script src= "Random.js"></script>    
-    </head>
+    <head>
+    <meta charset="utf-8">
+    <title>Journal Website - Journal</title>
+    <link rel="stylesheet" href="mainTheme.css">
+    <script src="JavaScript.js"></script>
+    <script src="loginLoad.js"></script>
+    <script src="Random.js"></script>
+</head>
 
-    <body onload = "loadLogin()">
-       
-        <p id="loginBox">  </p>
-        <h1 id="titleH"> Journal Website </h1>
+<body onload="loadLogin()">
 
-        <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
-        <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
-        <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value= "+" />
+    <p id="loginBox"> </p>
+    <h1 id="titleH"> Journal Website </h1>
+
+    <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value="History" />
+    <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
+    <input id="mainButtonSelected" type="button" onclick="location.href='pageJournal.html';" value="+" />
 
 
-               <h2>Write journal entry: </h2>  <br>
-        <button onclick="boldText()" id="buttonBold"> B </button>
-        <button onclick="italicText()" id="buttonItalic">I</button>
-        <button onclick="underlineText()" id="buttonUnderline">U</button>
+    <h2>Write journal entry: </h2> <br>
+    <button onclick="boldText()" id="buttonBold"> B </button>
+    <button onclick="italicText()" id="buttonItalic">I</button>
+    <button onclick="underlineText()" id="buttonUnderline">U</button>
 
-            <select id="textFont" onchange = "chooseFont()">
+    <select id="textFont" onchange="chooseFont()">
                 <option value="Times New Roman">Times New Roman</option>
                 <option value="Arial">Arial </option>
                 <option value="Courier">Courier</option>
@@ -32,7 +32,7 @@
                 <option value="Impact"> Impact</option>
             </select>
 
-            <select id="textSize" onchange = "chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
+    <select id="textSize" onchange="chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
                 <option value="12px"> 10pt </option>
                 <option value="12px" selected> 12pt </option>
                 <option value="14px"> 14pt </option>
@@ -44,8 +44,8 @@
                 <option value="26px"> 26pt </option>
             </select>
 
-            <select id="textColor" onchange = "chooseColor()">
-                <option value="black" > Black </option> <!-- impossible to style <option> elements -->
+    <select id="textColor" onchange="chooseColor()">
+                <option value="black" > Black </option> <!-- cannot style <option> elements -->
                 <option value= "blue" > Blue </option>
                 <option value="red"   > Red </option>
                 <option value="green" > Green  </option>
@@ -59,23 +59,21 @@
                 <option value="beige" > Beige  </option>
             </select>
 
-        <form action="pageHistory.html" method="get">
+    <form action="pageHistory.html" method="get">
 
-         <textarea placeholder= "Title:" onclick= "titleTextClick()" rows="1" cols="50" id="titleText" ></textarea> <br>
+        <textarea placeholder="Title:" onclick="titleTextClick()" rows="1" cols="50" id="titleText"></textarea> <br>
 
-        <textarea onclick= "journalTextClick()" placeholder="What happened today?"
-                  rows="20" cols="50" id="journalText" ></textarea> <br>
-
-
-    <!--    <button  type="submit" id="viewPast"> View Past Entries </button>    -->
-        </form>
-            <button id="submit" onclick="testSet()"> Submit Entry </button>
-            <div id="submitStatus"> </div>
+        <textarea onclick="journalTextClick()" placeholder="What happened today?" rows="20" cols="50" id="journalText"></textarea> <br>
 
 
-        <br>
-        <button onclick="sentence()" id="randomButton"> Writer's block? Try this random sentence generator... </button>
-        <div id = "randomBox"> </div>
+    </form>
+    <button id="submit" onclick="testSet()"> Submit Entry </button>
+    <div id="submitStatus"> </div>
 
-    </body>
+
+    <br>
+    <button onclick="sentence()" id="randomButton"> Writer's block? Try this random sentence generator... </button>
+    <div id="randomBox"> </div>
+
+</body>
 </html>

@@ -4,53 +4,57 @@
 <html>
     <head>
 
-        <meta charset="utf-8">
-        <title>Journal Website - Sign Up</title>
-        <link rel="stylesheet" href="mainTheme.css">
-        <meta name="google-signin-scope" content="profile email">
-        <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src= "JavaScript.js"></script>
-        <script src= "Google.js"></script>
-        <script src= "loginLoad.js"></script>
+    <meta charset="utf-8">
+    <title>Journal Website - Sign Up</title>
+    <link rel="stylesheet" href="mainTheme.css">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="JavaScript.js"></script>
+    <script src="Google.js"></script>
+    <script src="Verification.js"></script>
 
-        
-    </head>
-    <body onload = "loadLogin()">
-        
-        <p id="loginBox">  </p>
-        <h1 id="titleH"> Journal Website </h1>
+</head>
 
+<body onload="loadLogin()">
 
-        <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value= "History" />
-        <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value= "Account" />
-        <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value= "+" />
+    <p id="loginBox"> </p>
+    <h1 id="titleH"> Journal Website </h1>
 
 
+    <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value="History" />
+    <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
+    <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value="+" />
 
 
 
-        <h2> Account Sign-Up </h2>
-
-        <form action="/action_page.php" method="get">
-            Enter email: <br>  <!-- <br> = break -->
-            <input placeholder="..." id="emailText" type="text">
-            <button onclick="verifyEmail()" type="button" > Verify </button> <br> <!-- without type 'button', will auto-send the form! -->
-
-            Enter password <br>
-            <input placeholder="..." id= "passwordText" type="password">
-                <button onclick="verifyPassword()" type="button" > Verify </button> <br> <br>  <!-- without type 'button', will auto-send the form! -->
-
-            <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
-            <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
 
 
-        </form>
-            <button name="name" value="value" onclick="onSubmit();loadLogin();" id="submit"> Signup </button>
+    <h2> Account Sign-Up </h2>
 
-        <div id="submitStatus">  </div>
+    <form action="/action_page.php" method="get">
+        Enter email: <br>
+        <!-- <br> = break -->
+        <input placeholder="..." id="emailText" type="text">
+        <button onclick="verifyEmail()" type="button"> Verify </button> <br>
+        <!-- without type 'button', will auto-send the form! -->
 
-        <div id="googleDiv" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>  <!--  google signin -->
-    </body>
+        Enter password <br>
+        <input placeholder="..." id="passwordText" type="password">
+        <button onclick="verifyPassword()" type="button"> Verify </button> <br> <br>
+        <!-- without type 'button', will auto-send the form! -->
+
+        <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
+        <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
+
+
+    </form>
+    <button name="name" value="value" onclick="verifyLogin();loadLogin();" id="submit"> Signup </button>
+
+    <div id="submitStatus"> </div>
+
+    <div id="googleDiv" class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+    <!--  google signin -->
+</body>
 
 </html>
