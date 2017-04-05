@@ -90,6 +90,9 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
     <ul id='events'></ul>
     <!-- ul = 'Unorderd List', events go in here -->
 
+        <div2 id = "div2"> </div2>
+    <!-- new list test goes in here -->
+    
     <a href='#' id='authorize-button' onclick='handleAuthClick();'> Authorize Button</a>
 
 
@@ -131,9 +134,10 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                             var eventMonth = splitString[1];
                             var eventDay = splitString[2];
 
-                            console.log(splitString[0]);
-                            console.log(splitString[1]);
-                            //console.log(splitString[2]);
+                           
+                            console.log("eventYear: " + eventYear);
+                            console.log("eventMonth: " + eventMonth);
+                            console.log("eventDay: " + eventDay);
 
                             if (eventYear == valueYear && eventMonth == valueMonth) {
                                 document.getElementById('events').appendChild(li);
@@ -152,6 +156,50 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+    
+    <script>  
+    
+       /*
+                            the next stage:
+                            -auto-generate 31 day months (customise for smaller months later)
+                            -if the day of the event matches the day generated, then fill that box with a certain color, and fill with event text. 
+                            -also put placeholder stubs in each box showing the date. 
+        */
+        
+            var div = document.getElementById("div2")
+                            
+            for (i = 1; i <= 31; i += 1) {
+        
+            inputJournal = document.createElement("textarea");
+
+            inputJournal.cols = "15";
+            inputJournal.rows = "4";
+            inputJournal.style.resize = "none";
+            inputJournal.placeholder = i;
+
+            div.appendChild(inputJournal);
+
+        } //for
+        
+        
+    </script>
+    
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
