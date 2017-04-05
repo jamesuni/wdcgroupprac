@@ -1,7 +1,6 @@
 <!--NOTES:
 
 –Most of this code is from this blog post: https://gsuite-developers.googleblog.com/2011/12/using-new-js-library-to-unlock-power-of.html
-–This code simply pulls down a list of past calandar events. 
 
 http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-api-in-javascript
 -->
@@ -60,11 +59,15 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
 <html>
 
+<head>
+    <link rel="stylesheet" href="mainTheme.css">
+</head>
+
 <body>
 
     <h1>Events</h1>
 
-    <select id="selectYear" onchange="makeApiCall()">
+    <select id="selectYear" onchange="makeApiCall();loadBoxes">
                 <option value="2013">2013</option>
                 <option value="2014">2014</option>
                 <option value="2015">2015</option>
@@ -72,7 +75,7 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                 <option value="2017">2017</option>
             </select>
 
-    <select id="selectMonth" onchange="makeApiCall()">
+    <select id="selectMonth" onchange="makeApiCall();loadBoxes()">
                 <option value="01">January</option>
                 <option value="02">Febuary</option>
                 <option value="03">March</option>
@@ -90,9 +93,9 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
     <ul id='events'></ul>
     <!-- ul = 'Unorderd List', events go in here -->
 
-        <div2 id = "div2"> </div2>
+    <div2 id="div2"> </div2>
     <!-- new list test goes in here -->
-    
+
     <a href='#' id='authorize-button' onclick='handleAuthClick();'> Authorize Button</a>
 
 
@@ -103,9 +106,9 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                 var request = gapi.client.calendar.events.list({
                     'calendarId': 'primary',
                 });
-                
-                   $("ul").empty(); //clears the list after each option change
-                
+
+                $("ul").empty(); //clears the list after each option change
+
                 request.execute(function(resp) {
                     for (var i = 0; i < resp.items.length; i++) {
 
@@ -134,7 +137,7 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                             var eventMonth = splitString[1];
                             var eventDay = splitString[2];
 
-                           
+
                             console.log("eventYear: " + eventYear);
                             console.log("eventMonth: " + eventMonth);
                             console.log("eventDay: " + eventDay);
@@ -156,50 +159,43 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
     </script>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
+
+    <script>
     
-    <script>  
-    
-       /*
-                            the next stage:
-                            -auto-generate 31 day months (customise for smaller months later)
-                            -if the day of the event matches the day generated, then fill that box with a certain color, and fill with event text. 
-                            -also put placeholder stubs in each box showing the date. 
-        */
-        
+        function loadBoxes() {
+
+            $("div2").empty(); //clears the list after each option change
+
             var div = document.getElementById("div2")
-                            
-            for (i = 1; i <= 31; i += 1) {
-        
-            inputJournal = document.createElement("textarea");
 
-            inputJournal.cols = "15";
-            inputJournal.rows = "4";
-            inputJournal.style.resize = "none";
-            inputJournal.placeholder = i;
+            var length = 31;
 
-            div.appendChild(inputJournal);
+            var m = document.getElementById("selectMonth");
+            var valueMonth = m.options[m.selectedIndex].value;
 
-        } //for
-        
-        
+            if (valueMonth == 2) {
+                length = 28; //feburary has 29 days (leap years not dealt with yet)
+            }
+            if (valueMonth == 4 || valueMonth == 5 || valueMonth == 9 || valueMonth == 11) {
+                length = 30; //april, june, september & november have 30 days
+            }
+
+            for (i = 1; i <= length; i += 1) {
+
+                inputJournal = document.createElement("textarea");
+
+                inputJournal.cols = "15";
+                inputJournal.rows = "4";
+                inputJournal.style.resize = "none";
+                inputJournal.placeholder = i;
+
+                div.appendChild(inputJournal);
+
+            } //for
+        }
+
     </script>
-    
+
 </body>
 
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
