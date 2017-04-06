@@ -145,13 +145,7 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                             if (eventYear == valueYear && eventMonth == valueMonth) {
                                 document.getElementById('events').appendChild(li);
                             }
-
                         }
-
-                        //if (date year == selectYear) -> print it
-                        //else {} -> don't print it 
-
-                        //                        document.getElementById('events').appendChild(li);
                     } //for
                 }); //function(resp)
             }); //function()
@@ -161,7 +155,6 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
 
     <script>
-    
         function loadBoxes() {
 
             $("div2").empty(); //clears the list after each option change
@@ -183,14 +176,13 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
             for (i = 1; i <= length; i += 1) {
 
                 inputJournal = document.createElement("textarea");
-
                 inputJournal.cols = "15";
                 inputJournal.rows = "4";
                 inputJournal.style.resize = "none";
                 inputJournal.placeholder = i;
-
+                inputJournal.id = "calandarBox";
+                
                 div.appendChild(inputJournal);
-
             } //for
         }
 

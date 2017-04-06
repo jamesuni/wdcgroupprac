@@ -143,12 +143,35 @@ background: #3cb0fd;
 
 
 
-/*
-#submit:hover
-{
-    color: #ffffff;
-    background: #3cb0fd;
-    border: solid #000000 2px;
-    border-radius: 60px;
+
+
+
+
+
+
+
+
+
+
+
+/* for APItext */
+/* credit to http://stackoverflow.com/questions/16156594/how-to-change-border-color-of-textarea-on-focus */
+#calandarBox:focus { 
+    outline: none !important; 
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
 }
-*/
+
+#calandarBox:focus::placeholder
+{
+    color: aqua;
+}
+
+#calandarBox:hover {
+        border-color: blue;
+}
+
+#calandarBox::placeholder 
+{ 
+    font-size: 40pt; color: #555; 
+}
