@@ -1,12 +1,12 @@
         function makeApiCall() {
-            gapi.client.load('calendar', 'v3', function() {
+            gapi.client.load('calendar', 'v3', function () {
                 var request = gapi.client.calendar.events.list({
                     'calendarId': 'primary',
                 });
 
                 $("ul").empty(); //clears the list after each option change
 
-                request.execute(function(resp) {
+                request.execute(function (resp) {
                     for (var i = 0; i < resp.items.length; i++) {
 
 
@@ -27,6 +27,7 @@
                         //console.log("valueYear: " + valueYear);
 
                         var dateString = resp.items[i].start.date;
+
                         if (dateString != undefined) {
                             var splitString = dateString.split('-');
 
@@ -43,14 +44,13 @@
 
 
                                 //because these are '01, 02, etc' and calandarBox is '1, 2, etc'
-                                var shortenedNumber = +eventDay; //int->string, parseInt not working 
+                                var shortenedNumber = +eventDay; //parseInt not working 
                                 var targetID = "calandarBox" + shortenedNumber;
 
                                 //console.log("targetID: " + targetID);
 
                                 document.getElementById(targetID).value = resp.items[i].summary;
                             }
-
 
                         }
                     } //for
@@ -66,37 +66,59 @@
 
 
 
+        function loadBoxes() {
+
+            $("div2").empty(); //clears the list after each option change
+
+            var div = document.getElementById("div2")
+            var m = document.getElementById("selectMonth");
+            var valueMonth = m.options[m.selectedIndex].value;
+            var length = 31;
+
+            if (valueMonth == 2) {
+                length = 28; //feburary has 29 days (leap years not dealt with yet)
+            }
+            if (valueMonth == 4 || valueMonth == 5 || valueMonth == 9 || valueMonth == 11) {
+                length = 30; //april, june, september & november have 30 days
+            }
+
+            for (i = 1; i <= length; i += 1) {
+
+                inputJournal = document.createElement("textarea");
+                inputJournal.cols = "15";
+                inputJournal.rows = "4";
+                inputJournal.style.resize = "none";
+                inputJournal.placeholder = i;
+                inputJournal.id = "calandarBox" + i.toString(); //they can't all have the same ID - you need to do things to indivudal boxes, such as load events into them!
+                //console.log("id created = " + inputJournal.id);
 
 
 
-    function loadBoxes() {
+                //–––––––here, test the data input starting with just '
+                //console.log(valueMonth + "-" + valueYear + "-" + i);
+                //console.log("sessionStorage.getItem(" + i.toString + ") == " + sessionStorage.getItem(i.toString()))
 
-        $("div2").empty(); //clears the list after each option change
+                if (sessionStorage.getItem(i.toString()) != null) {
+                    inputJournal.value = sessionStorage.getItem(i.toString());
+                    inputJournal.style.color = sessionStorage.getItem("fontColor" + i);
+                    inputJournal.style.fontSize = sessionStorage.getItem("fontSize" + i);
+                    inputJournal.style.fontFamily = sessionStorage.getItem("fontFamily" + i);
+                    if (sessionStorage.getItem("bold" + i) == "true") {
+                        inputJournal.style.fontWeight = "bold";
+                    }
+                    if (sessionStorage.getItem("italic" + i) == "true") {
+                        inputJournal.style.fontStyle = "italic";
+                    }
+                    if (sessionStorage.getItem("underline" + i) == "true") {
+                        inputJournal.style.textDecoration = "underline";
+                    }
+                }
 
-        var div = document.getElementById("div2")
 
-        var length = 31;
 
-        var m = document.getElementById("selectMonth");
-        var valueMonth = m.options[m.selectedIndex].value;
 
-        if (valueMonth == 2) {
-            length = 28; //feburary has 29 days (leap years not dealt with yet)
+
+
+                div.appendChild(inputJournal);
+            } //for
         }
-        if (valueMonth == 4 || valueMonth == 5 || valueMonth == 9 || valueMonth == 11) {
-            length = 30; //april, june, september & november have 30 days
-        }
-
-        for (i = 1; i <= length; i += 1) {
-
-            inputJournal = document.createElement("textarea");
-            inputJournal.cols = "15";
-            inputJournal.rows = "4";
-            inputJournal.style.resize = "none";
-            inputJournal.placeholder = i;
-            inputJournal.id = "calandarBox" + i.toString(); //they can't all have the same ID - you need to do things to indivudal boxes, such as load events into them!
-            console.log("id created = " + inputJournal.id);
-
-            div.appendChild(inputJournal);
-        } //for
-    }
