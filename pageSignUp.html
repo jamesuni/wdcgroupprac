@@ -1,7 +1,7 @@
 
-
 <!DOCTYPE html>
 <html>
+
     <head>
 
     <meta charset="utf-8">
@@ -19,13 +19,18 @@
 
 <body onload="loadLogin()">
 
-    <p id="loginBox"> </p>
-    <h1 id="titleH"> Journal Website </h1>
+    <header>
+        <h1> Journal Website </h1>
+        <p id="loginBox"> </p>
+    </header>
+
+    <nav>
+      <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value="History" />
+      <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
+      <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value="+" />
+    </nav>
 
 
-    <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value="History" />
-    <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
-    <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value="+" />
 
 
 

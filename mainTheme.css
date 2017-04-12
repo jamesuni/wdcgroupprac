@@ -1,9 +1,3 @@
-
-
-
-
-
-
 html {
     background-color: gray;
     text-align: center; /* by default, text should be 'scaled' and 'centered' */
@@ -17,6 +11,11 @@ html {
 
 }
 */
+
+#index_header{
+        padding-top: 10%;
+}
+
 
 #buttonBold {
        font-weight:bold
@@ -46,7 +45,6 @@ div2 /* div2 is for the rest of the content on the page, as seperated from the b
         text-align: center; /* by default, text should be 'scaled' and 'centered' */
 /*        font-style:italic;*/
 }
-
 
 
 
@@ -97,25 +95,23 @@ background: #3cb0fd;
 
 }
 */
-
-#titleH {
+h1 {
     /* credit to GenerateCSS.com */
-        text-decoration:none;
-        font-size: 60px;
-        font-family: serif;
-        font-style: italic;
-        color: black;
-
+    text-decoration:none;
+    font-size: 60px;
+    font-family: serif;
+    font-style: italic;
+    text-align-last: center;
+    color: black;
 }
 
 #loginBox
 {
-    font-size: 24px;
+    float: right;
+    font-size: 15px;
     font-style: italic;
     color: #4286f4; /* changed to blue when login occurs */
-    background: white;
 }
-
 
 
 #randomBox

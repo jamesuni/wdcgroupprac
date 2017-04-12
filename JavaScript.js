@@ -92,7 +92,7 @@ function journalTextClick() {
 
 
 
-//returns the number of journal entries 
+//returns the number of journal entries
 function getNumEntries() {
     "use strict";
     var numEntries = 0,
@@ -113,11 +113,11 @@ function getNumEntries() {
 
 function testSet() {
     "use strict";
-    //works out how many entries there are, then + 1 to get to an empty place. 
+    //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
         posName = position.toString();
 
-    
+
     //––––––––––––– text that appears when the 'submit' button is pressed
     document.getElementById("submitStatus").style.background = "white";
     if (document.getElementById('journalText').value === "") {
@@ -184,10 +184,10 @@ function newTextarea() {
 
 
         for (i = 1; i <= numEntries; i += 1) {
-        
+
             inputTitle = document.createElement("textarea");
             inputJournal = document.createElement("textarea");
-            
+
             inputJournal.value = sessionStorage.getItem(i.toString());
             inputTitle.value = sessionStorage.getItem('title' + i.toString());
 
@@ -235,7 +235,7 @@ function loadLogin() {
         var element = document.createElement("button"),
             foo = document.getElementById("loginBox");
 
-        
+
         element.innerText = "Logout";
         element.id = "logout";
         element.onclick = function () {
@@ -246,7 +246,5 @@ function loadLogin() {
         foo.appendChild(element);
 
 
-    } else {
-        document.getElementById("loginBox").innerHTML = "[Not logged in]";
     }
 }
