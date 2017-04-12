@@ -59,11 +59,18 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
 <head>
     <link rel="stylesheet" href="mainTheme.css">
+    <script src="JavaScript.js"></script>
 </head>
 
-<body>
+<body onload="loadLogin()">
 
-    <h1>Events</h1>
+    <p id="loginBox"> </p>
+    <h1 id="titleH"> Journal Website </h1>
+
+    <input id="mainButtonSelected" type="button" onclick="location.href='APItest.html';" value="History" />
+    <input class="mainButton" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
+    <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value="+" /> <br>
+
 
     <select id="selectYear" onchange="makeApiCall();loadBoxes">
                 <option value="2013">2013</option>
@@ -96,7 +103,7 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
     <a href='#' id='authorize-button' onclick='handleAuthClick();'> Authorize Button</a>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
-<!--    moving the handleClientLoad() script to top of page stops it running automatically-->
+    <!--    moving the handleClientLoad() script to top of page stops it running automatically-->
 
 
 </body>
