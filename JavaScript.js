@@ -131,10 +131,34 @@ function testSet() {
 
         sessionStorage.setItem(posName, document.getElementById('journalText').value);
 
-        if (document.getElementById('titleText').value === "") {
+        if (document.getElementById('titleText').value === "") { //if user has NOT entered title
             sessionStorage.setItem('title' + posName, getDate());
-        } else {
+
+            //start new addition
+            sessionStorage.setItem(getDate(), document.getElementById('journalText').value)
+
+            sessionStorage.setItem("fontColor" + getDate(), document.getElementById('journalText').style.color);
+            sessionStorage.setItem("fontSize" + getDate(), document.getElementById('journalText').style.fontSize);
+            sessionStorage.setItem("fontFamily" + getDate(), document.getElementById('journalText').style.fontFamily);
+
+            console.log("item set using tag [" + getDate() + "]");
+            console.log("text should exist: " + sessionStorage.getItem(getDate()));
+            console.log("fontColor tag: " + "fontColor" + getDate());
+            //end new addition
+        } else { //if user HAS entered title
             sessionStorage.setItem('title' + posName, document.getElementById('titleText').value);
+
+            //start new addition
+            sessionStorage.setItem(document.getElementById('titleText').value, document.getElementById('journalText').value);
+
+            sessionStorage.setItem("fontColor" + document.getElementById('titleText').value, document.getElementById('journalText').style.color);
+            sessionStorage.setItem("fontSize" + document.getElementById('titleText').value, document.getElementById('journalText').style.fontSize);
+            sessionStorage.setItem("fontFamily" + document.getElementById('titleText').value, document.getElementById('journalText').style.fontFamily);
+
+            console.log("item set using tag [" + document.getElementById('titleText').value + "]");
+            console.log("text should exist: " + sessionStorage.getItem(document.getElementById('titleText').value));
+            console.log("fontColor tag: " + "fontColor" + document.getElementById('titleText').value);
+            //end new addition
         }
 
         if (document.getElementById('journalText').style.fontWeight === "bold") {
@@ -156,10 +180,11 @@ function testSet() {
         }
     }
 
-
     sessionStorage.setItem("fontColor" + posName, document.getElementById('journalText').style.color);
     sessionStorage.setItem("fontSize" + posName, document.getElementById('journalText').style.fontSize);
     sessionStorage.setItem("fontFamily" + posName, document.getElementById('journalText').style.fontFamily);
+
+
 }
 
 

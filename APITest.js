@@ -71,10 +71,14 @@
             $("div2").empty(); //clears the list after each option change
 
             var div = document.getElementById("div2")
-            var m = document.getElementById("selectMonth");
-            var valueMonth = m.options[m.selectedIndex].value;
-            var length = 31;
 
+            var m = document.getElementById("selectMonth");
+            var y = document.getElementById("selectYear");
+
+            var valueMonth = m.options[m.selectedIndex].value;
+            var valueYear = y.options[y.selectedIndex].value;
+
+            var length = 31;
             if (valueMonth == 2) {
                 length = 28; //feburary has 29 days (leap years not dealt with yet)
             }
@@ -89,7 +93,7 @@
                 inputJournal.rows = "4";
                 inputJournal.style.resize = "none";
                 inputJournal.placeholder = i;
-                inputJournal.id = "calandarBox" + i.toString(); //they can't all have the same ID - you need to do things to indivudal boxes, such as load events into them!
+                inputJournal.id = "calandarBox" + i.toString(); //they can't all have the same ID - you need to do things to individual boxes, such as load events into them!
                 //console.log("id created = " + inputJournal.id);
 
 
@@ -98,26 +102,40 @@
                 //console.log(valueMonth + "-" + valueYear + "-" + i);
                 //console.log("sessionStorage.getItem(" + i.toString + ") == " + sessionStorage.getItem(i.toString()))
 
-                if (sessionStorage.getItem(i.toString()) != null) {
-                    inputJournal.value = sessionStorage.getItem(i.toString());
-                    inputJournal.style.color = sessionStorage.getItem("fontColor" + i);
-                    inputJournal.style.fontSize = sessionStorage.getItem("fontSize" + i);
-                    inputJournal.style.fontFamily = sessionStorage.getItem("fontFamily" + i);
-                    if (sessionStorage.getItem("bold" + i) == "true") {
-                        inputJournal.style.fontWeight = "bold";
-                    }
-                    if (sessionStorage.getItem("italic" + i) == "true") {
-                        inputJournal.style.fontStyle = "italic";
-                    }
-                    if (sessionStorage.getItem("underline" + i) == "true") {
-                        inputJournal.style.textDecoration = "underline";
-                    }
+
+                
+                if (i < 10) //to turn '1' into '01'
+                {
+                    var dateString = valueMonth + "/0" + i + "/" + valueYear;
+                } else {
+                    var dateString = valueMonth + "/" + i + "/" + valueYear;
+                }
+                console.log("dateString: [" + dateString + "]");
+
+
+                if (sessionStorage.getItem(dateString) != null)
+                {
+                    inputJournal.value = sessionStorage.getItem(dateString);
+                    inputJournal.style.color = sessionStorage.getItem("fontColor" + dateString);
+                    inputJournal.style.fontSize = sessionStorage.getItem("fontSize" + dateString);
+                    inputJournal.style.fontFamily = sessionStorage.getItem("fontFamily" + dateString);
                 }
 
-
-
-
-
+//                if (sessionStorage.getItem(i.toString()) != null) {
+//                    inputJournal.value = sessionStorage.getItem(i.toString());
+//                    inputJournal.style.color = sessionStorage.getItem("fontColor" + i);
+//                    inputJournal.style.fontSize = sessionStorage.getItem("fontSize" + i);
+//                    inputJournal.style.fontFamily = sessionStorage.getItem("fontFamily" + i);
+//                    if (sessionStorage.getItem("bold" + i) == "true") {
+//                        inputJournal.style.fontWeight = "bold";
+//                    }
+//                    if (sessionStorage.getItem("italic" + i) == "true") {
+//                        inputJournal.style.fontStyle = "italic";
+//                    }
+//                    if (sessionStorage.getItem("underline" + i) == "true") {
+//                        inputJournal.style.textDecoration = "underline";
+//                    }
+//                }
 
                 div.appendChild(inputJournal);
             } //for
