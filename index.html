@@ -11,7 +11,9 @@
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="JavaScript.js"></script>
     <script src="Google.js"></script>
-    <script src="Verification.js"></script>
+    <script src="index.js"></script>
+    <script src="valid.js"></script>
+    
   </head>
 
   <body onload="loadLogin()">
@@ -21,12 +23,16 @@
     </header>
 
     <nav>
-      <h2> Account Sign In</h2>
+      <h2 name="task">Account Sign In</h2>
+      <p name="pagestate">
+
+      </p>
       <form action="/action_page.php" method="get">
-        <input placeholder="someone@example.com" id="emailText" type="text" />
+        <input name="forminput" placeholder="someone@example.com" id="emailText" type="text"/>
         <br />
-        <button onclick="verifyEmail();loadLogin();" id="buttonBold">Sign In</button>
-        <button type="button">Register</button>
+        <button name="next" onclick="next()" onsubmit="next()"
+            id="buttonBold">Next</button>
+        <button name="register" onclick="registerswitch()"> Register </button>
       </form>
     </nav>
 

@@ -3,7 +3,7 @@
 //Verification.js
 //verifyEmail() ----- checks the text entered is in an 'email address' format
 //verifyPassword() ----- checks the text entered is < 8 chars, and has numbers and symbols
-//verifyLogin() ---- checks that verifyEmail() and verifyPassword() are true, then logs person in and stores their login info. otherwise, prompts user why login failed. 
+//verifyLogin() ---- checks that verifyEmail() and verifyPassword() are true, then logs person in and stores their login info. otherwise, prompts user why login failed.
 
 function verifyEmail() {
     "use strict";
@@ -85,7 +85,7 @@ function verifyLogin() {
     //    alert(document.getElementById("paswordText").value); //doesn't work! because it is password type?
 
     //    Boolean isEmailValid = verifyEmail; //causing error
-    var isEmailValid = verifyEmail; //NOT WORKING. WHY?
+    var isEmailValid = verifyEmail(); //NOT WORKING. WHY?
 
     if (document.getElementById("emailText").value === "") {
         document.getElementById("submitStatus").style.color = "red";
@@ -110,4 +110,3 @@ function verifyLogin() {
     //                document.getElementById("submitStatus").style.color = "red";
     //                document.getElementById("submitStatus").innerHTML = "Submission error: enter your password";
     //    }
-
