@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Journal Website</title>
+    <meta name="author" content="Burrough Clarke, Jack Arney, and James Quinn" />
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico">
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="JavaScript.js"></script>
+    <script src="Google.js"></script>
+    <script src="index.js"></script>
+    <script src="valid.js"></script>
+
+  </head>
+
+  <body onload="loadLogin()">
+    <header id="index_header">
+      <h1 id="index_title"> Journal Website </h1>
+      <p id="loginBox"> </p>
+    </header>
+
+    <nav>
+      <h2 name="task">Account Sign In</h2>
+      <p name="pagestate">
+
+      </p>
+      <form action="/action_page.php" method="get">
+        <input name="forminput" placeholder="someone@example.com" id="emailText" type="text"/>
+        <br />
+        <button name="next" onclick="next()" onsubmit="next()"
+            id="buttonBold">Next</button>
+        <button name="register" onclick="registerswitch()"> Register </button>
+      </form>
+    </nav>
+
+
+  </body>
+</html>
