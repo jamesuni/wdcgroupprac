@@ -10,7 +10,7 @@ function next() {
 
   // on load state
   if (document.getElementByName("task").innerHTML === "Account Sign In") {
-    if (!verify_email) {
+    if (verify_email) {
       document.getElementByName("pagestate") = "Invalid email address, try again";
       document.getElementsByName("forminput") = "";
       return;
@@ -19,15 +19,16 @@ function next() {
       document.getElementByName("next").innerHTML = "Login";
       document.getElementsByName("forminput") = "";
     }
-  } else if (document.getElementByName("next").innerHTML === "Login") {
-    // need to check if password valid
-      if (!verify_password) {
-        document.getElementsByName("pagestate") = "Password is incorrect, try again";
-        document.getElementsByName("forminput") = "";
-        return;
-      } else {
-        window.location.replace("pageJournal.html");
-      }
+  }
+  // else if (document.getElementByName("next").innerHTML === "Login") {
+  //   // need to check if password valid
+  //     if (!verify_password) {
+  //       document.getElementsByName("pagestate") = "Password is incorrect, try again";
+  //       document.getElementsByName("forminput") = "";
+  //       return;
+  //     } else {
+  //       window.location.replace("pageJournal.html");
+  //     }
   }
 }
 

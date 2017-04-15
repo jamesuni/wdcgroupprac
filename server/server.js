@@ -8,19 +8,19 @@ const path = require('path');               // path handling
 const favicon = require('serve-favicon');   // favicon handling
 const app = express();                      // create server
 
-// set favicon
-//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
-app.use(favicon(path.join(__dirname, 'public/images/favicon.ico')));
-
-// read from form submission
-app.use(bodyParser.urlencoded({extended: true}));
-
 // static file handling and virtual path
 //  all statics files will automatically be requested
 app.use(express.static(path.join(__dirname, 'public/css')));
 app.use(express.static(path.join(__dirname, 'public/html')));
 app.use(express.static(path.join(__dirname, 'public/images')));
 app.use(express.static(path.join(__dirname, 'public/js')));
+
+// read from form submission
+app.use(bodyParser.urlencoded({extended: true}));
+
+// set favicon
+//app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images/favicon.ico')));
 
 // start server
 app.listen(port, function() {
