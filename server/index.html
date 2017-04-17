@@ -13,7 +13,6 @@
     <script src="Google.js"></script>
     <script src="index.js"></script>
     <script src="valid.js"></script>
-
   </head>
 
   <body onload="loadLogin()">
@@ -21,25 +20,9 @@
       <h1 id="index_title"> Journal Website </h1>
       <p id="loginBox"> </p>
     </header>
-
     <nav>
       <h2 name="task">Account Sign In</h2>
-
-      <p>
-        <a href="/main">temp link to main page</a>
-      </p>
-      <p name="pagestate">
-
-      </p>
-      <form>
-        <input name="forminput" placeholder="someone@example.com" id="emailText" type="text"/>
-        <br />
-        <button name="next" onclick="next()" onsubmit="next()"
-            id="buttonBold">Next</button>
-        <button name="register" onclick="registerswitch()"> Register </button>
-      </form>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
     </nav>
-
-
   </body>
 </html>

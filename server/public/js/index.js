@@ -6,30 +6,13 @@ script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
 // controls the functionality of the next button
-function next() {
-
-  // on load state
-  if (document.getElementByName("task").innerHTML === "Account Sign In") {
-    if (verify_email) {
-      document.getElementByName("pagestate") = "Invalid email address, try again";
-      document.getElementsByName("forminput") = "";
-      return;
-    } else {
-      document.getElementByName("forminput").placeholder = "Enter password";
-      document.getElementByName("next").innerHTML = "Login";
-      document.getElementsByName("forminput") = "";
-    }
-  }
-  // else if (document.getElementByName("next").innerHTML === "Login") {
-  //   // need to check if password valid
-  //     if (!verify_password) {
-  //       document.getElementsByName("pagestate") = "Password is incorrect, try again";
-  //       document.getElementsByName("forminput") = "";
-  //       return;
-  //     } else {
-  //       window.location.replace("pageJournal.html");
-  //     }
-  }
+function onSignIn(googleUser) {
+  var profile = googleUser.getBasicProfile();
+  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  console.log('Name: ' + profile.getName());
+  console.log('Image URL: ' + profile.getImageUrl());
+  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+  window.location.replace('main.html');
 }
 
 // controls the functionality of the register button

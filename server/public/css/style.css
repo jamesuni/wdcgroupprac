@@ -35,6 +35,11 @@ html {
        text-decoration:underline
 }
 
+nav {
+  align-items: center;
+  margin: auto;
+}
+
 div1  /* div1 is for the main title/logo that is on every page */
 {
 /*       font-style:italic;*/
