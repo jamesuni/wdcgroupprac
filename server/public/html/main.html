@@ -1,38 +1,33 @@
 <!DOCTYPE html>
 <html>
-    <head>
+<head>
     <meta charset="utf-8">
     <title>Journal Website - Journal</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.ico">
-    <script src="new.js"></script>
-    <script src="loginLoad.js"></script>
     <script src="random.js"></script>
 </head>
 
-<body onload="loadLogin()">
-
-
-    <h1> Journal Website </h1>
+<body>    
+    <h1>Journal Website</h1>
     <p id="loginBox"> </p>
 
     <input class="mainButton" type="button" onclick="location.href='history.html';" value="History" />
     <input class="mainButton" type="button" onclick="location.href='main.html';" value="Account" />
     <input id="mainButtonSelected" type="button" onclick="location.href='new.html';" value="+" />
 
-
     <h2>Write journal entry: </h2> <br>
-    <button onclick="boldText()" id="buttonBold"> B </button>
+    <button onclick="boldText()" id="buttonBold">B</button>
     <button onclick="italicText()" id="buttonItalic">I</button>
     <button onclick="underlineText()" id="buttonUnderline">U</button>
 
     <select id="textFont" onchange="chooseFont()">
                 <option value="Times New Roman">Times New Roman</option>
-                <option value="Arial">Arial </option>
+                <option value="Arial">Arial</option>
                 <option value="Courier">Courier</option>
-                <option value="Verdana"> Verdana</option>
-                <option value="Impact"> Impact</option>
-            </select>
+                <option value="Verdana">Verdana</option>
+                <option value="Impact">Impact</option>
+   </select>
 
     <select id="textSize" onchange="chooseSize()"> <!-- 'onchange' replaced 'onclick'-->
                 <option value="10px"> 10pt </option>
@@ -44,22 +39,22 @@
                 <option value="22px"> 22pt </option>
                 <option value="24px"> 24pt </option>
                 <option value="26px"> 26pt </option>
-            </select>
+    </select>
 
     <select id="textColor" onchange="chooseColor()">
                 <option value="black" > Black </option> <!-- cannot style <option> elements -->
                 <option value="blue" > Blue </option>
                 <option value="red"   > Red </option>
                 <option value="green" > Green  </option>
-                <option value="yellow" >Yellow  </option>
+                <option value="yellow" > Yellow </option>
                 <option value="pink"  > Pink  </option>
                 <option value="cyan" >  Cyan  </option>
                 <option value="grey" >  Grey  </option>
-                <option value="orange" >Orange  </option>
+                <option value="orange" > Orange </option>
                 <option value="brown" > Brown  </option>
                 <option value="white" > White  </option>
                 <option value="beige" > Beige  </option>
-            </select>
+    </select>
 
     <form action="history.html" method="get">
 
@@ -67,11 +62,9 @@
 
         <textarea onclick="journalTextClick()" placeholder="What happened today?" rows="20" cols="50" id="journalText"></textarea> <br>
 
-
     </form>
     <button id="submit" onclick="testSet()"> Submit Entry </button>
     <div id="submitStatus"> </div>
-
 
     <br>
     <button onclick="sentence()" id="randomButton"> Writer's block? Try this random sentence generator... </button>

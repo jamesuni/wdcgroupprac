@@ -1,7 +1,5 @@
 /* jshint browser: true */
 
-
-
 function boldText() {
     "use strict";
     if (document.getElementById('journalText').style.fontWeight === "bold") {
@@ -35,8 +33,6 @@ function underlineText() {
     }
 }
 
-
-
 function chooseFont() {
     "use strict";
     document.getElementById('journalText').style.fontFamily = document.getElementById('textFont').value;
@@ -51,7 +47,6 @@ function chooseColor() {
     "use strict";
     document.getElementById('journalText').style.color = document.getElementById('textColor').value;
 }
-
 
 function getDate() {
     "use strict";
@@ -75,7 +70,6 @@ function getDate() {
     return today;
 }
 
-
 function titleTextClick() {
     "use strict";
     var today = getDate();
@@ -86,11 +80,6 @@ function journalTextClick() {
     "use strict";
     document.getElementById('journalText').placeholder = "What happened today? Start at the beginning...";
 }
-
-
-
-
-
 
 //returns the number of journal entries
 function getNumEntries() {
@@ -106,17 +95,11 @@ function getNumEntries() {
     return numEntries;
 }
 
-
-
-
-
-
 function testSet() {
     "use strict";
     //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
         posName = position.toString();
-
 
     //––––––––––––– text that appears when the 'submit' button is pressed
     document.getElementById("submitStatus").style.background = "white";
@@ -187,9 +170,6 @@ function testSet() {
 
 }
 
-
-
-
 function newTextarea() {
     "use strict";
 
@@ -232,7 +212,6 @@ function newTextarea() {
             inputJournal.style.fontSize = sessionStorage.getItem('fontSize' + i.toString());
             inputJournal.style.fontFamily = sessionStorage.getItem('fontFamily' + i.toString());
 
-
             inputTitle.cols = "50";
             inputTitle.rows = "1";
 
@@ -247,19 +226,14 @@ function newTextarea() {
     } //else
 }
 
-
-
-
 function loadLogin() {
     "use strict";
     if (sessionStorage.getItem('emailText') !== null) {
         document.getElementById("loginBox").innerHTML = "Logged in as: [" + sessionStorage.getItem('emailText') + "]";
         document.getElementById("loginBox").style.color = "blue";
 
-
         var element = document.createElement("button"),
             foo = document.getElementById("loginBox");
-
 
         element.innerText = "Logout";
         element.id = "logout";
@@ -269,7 +243,5 @@ function loadLogin() {
             window.location.reload(false);
         };
         foo.appendChild(element);
-
-
     }
 }
