@@ -1,8 +1,7 @@
-
 <!DOCTYPE html>
 <html>
 
-    <head>
+<head>
 
     <meta charset="utf-8">
     <title>Journal Website - Sign Up</title>
@@ -11,15 +10,15 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-<!--    <script src="JavaScript.js"></script>-->
+    <!--    <script src="JavaScript.js"></script>-->
     <script src="Google.js"></script>
-<!--    <script src="Verification.js"></script>-->
-    <script src = "pageSignUp.js"></script>
-    <script src = "loginLoad.js"></script>
+    <!--    <script src="Verification.js"></script>-->
+    <script src = "account.js"></script>
+<!--    <script src="loginLoad.js"></script>-->
 
 </head>
 
-<body onload="loadLogin()">
+<body onload="loadBackgroundColor()">
 
     <header>
         <h1> Journal Website </h1>
@@ -27,9 +26,9 @@
     </header>
 
     <nav>
-      <input class="mainButton" type="button" onclick="location.href='pageHistory.html';" value="History" />
-      <input id="mainButtonSelected" type="button" onclick="location.href='pageSignUp.html';" value="Account" />
-      <input class="mainButton" type="button" onclick="location.href='pageJournal.html';" value="+" />
+        <input class="mainButton" type="button" onclick="location.href='history.html';" value="History" />
+        <input id="mainButtonSelected" type="button" onclick="location.href='account.html';" value="Account" />
+        <input class="mainButton" type="button" onclick="location.href='new.html';" value="+" />
     </nav>
 
 
@@ -40,15 +39,76 @@
 
     <h2> Account Settings </h2>
 
-        <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
-        <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
-        
-    Ideas for what to put here: <br>
-    
-    –Appearance customization (e.g. select background color, select title style) <br>
-    -Logout/new login button <br>
-    -Default journal text style (that is auto-set for user in 'new' page) <br>
-    
+
+
+    <h2> Select background color </h2>
+
+    <select id="selectBackground" onchange="selectBackground()">
+                <option value="black" > Black </option> <!-- cannot style <option> elements -->
+                <option value="blue" > Blue </option>
+                <option value="red"   > Red </option>
+                <option value="green" > Green  </option>
+                <option value="yellow" >Yellow  </option>
+                <option value="pink"  > Pink  </option>
+                <option value="cyan" >  Cyan  </option>
+                <option value="grey" >  Grey  </option>
+                <option value="orange" >Orange  </option>
+                <option value="brown" > Brown  </option>
+                <option value="white" > White  </option>
+                <option value="beige" > Beige  </option>
+            </select>
+
+    <h2> Select title style </h2>
+
+    <select id="selectTitle" onchange="selectTitle()">
+                <option value="normal" > Normal </option> <!-- cannot style <option> elements -->
+                <option value="retro" > Retro </option>
+                <option value="futuristic"> Futuristic </option>
+            </select>
+
+    <h2> Default journal text style </h2>
+
+    <select id="selectDefaultFont" onchange="selectDefaultStyle()">
+                <option value="Times New Roman">Times New Roman</option>
+                <option value="Arial">Arial </option>
+                <option value="Courier">Courier</option>
+                <option value="Verdana"> Verdana</option>
+                <option value="Impact"> Impact</option>
+            </select>
+
+    <select id="selectDefaultSize" onchange="selectDefaultStyle()"> <!-- 'onchange' replaced 'onclick'-->
+                <option value="12px"> 10pt </option>
+                <option value="12px" selected> 12pt </option>
+                <option value="14px"> 14pt </option>
+                <option value="16px"> 16pt </option>
+                <option value="18px"> 18pt </option>
+                <option value="20px"> 20pt </option>
+                <option value="22px"> 22pt </option>
+                <option value="24px"> 24pt </option>
+                <option value="26px"> 26pt </option>
+            </select>
+
+    <select id="selectDefaultColor" onchange="selectDefaultStyle()">
+                <option value="black" > Black </option> <!-- cannot style <option> elements -->
+                <option value="blue" > Blue </option>
+                <option value="red"   > Red </option>
+                <option value="green" > Green  </option>
+                <option value="yellow" >Yellow  </option>
+                <option value="pink"  > Pink  </option>
+                <option value="cyan" >  Cyan  </option>
+                <option value="grey" >  Grey  </option>
+                <option value="orange" >Orange  </option>
+                <option value="brown" > Brown  </option>
+                <option value="white" > White  </option>
+                <option value="beige" > Beige  </option>
+            </select>
+
+    <h2> Feline information intake level </h2>
+
+    <input type="radio" name="yes" value="no" checked> Receive mail about cats <br>
+    <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
+
+
 
     <div id="submitStatus"> </div>
 
