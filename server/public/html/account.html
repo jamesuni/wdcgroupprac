@@ -7,6 +7,7 @@
     <title>Journal Website - Sign Up</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.png">
+    <link href='http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet'>
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
@@ -20,7 +21,7 @@
 
 <body onload="loadBackgroundColor()">
 
-    <header>
+    <header id="pageTitle">
         <h1> Journal Website </h1>
         <p id="loginBox"> </p>
     </header>
@@ -58,6 +59,23 @@
                 <option value="beige" > Beige  </option>
             </select>
 
+        <h2> Select text color </h2>
+
+        <select id="selectTextColor" onchange="selectTextColor()">
+                <option value="black" > Black </option> <!-- cannot style <option> elements -->
+                <option value="blue" > Blue </option>
+                <option value="red"   > Red </option>
+                <option value="green" > Green  </option>
+                <option value="yellow" >Yellow  </option>
+                <option value="pink"  > Pink  </option>
+                <option value="cyan" >  Cyan  </option>
+                <option value="grey" >  Grey  </option>
+                <option value="orange" >Orange  </option>
+                <option value="brown" > Brown  </option>
+                <option value="white" > White  </option>
+                <option value="beige" > Beige  </option>
+            </select>
+    
     <h2> Select title style </h2>
 
     <select id="selectTitle" onchange="selectTitle()">
