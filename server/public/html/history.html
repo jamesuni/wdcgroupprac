@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+
 <!--NOTES:
 
 –Most of this code is from this blog post: https://gsuite-developers.googleblog.com/2011/12/using-new-js-library-to-unlock-power-of.html
@@ -5,61 +7,64 @@
 http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-api-in-javascript
 -->
 
-<!DOCTYPE html>
-
 <html>
+
 <head>
-    
-<link rel="stylesheet" href="style.css">
+    <title>Journal Website - History</title>
 
-<script src="https://apis.google.com/js/api.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<!--<script src="javascript.js"></script>-->
-<script src="history.js"></script>
-<script src="account.js"></script>
+    <link rel="stylesheet" href="style.css">
 
-<script>
-    var clientId = '628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com';
-    var apiKey = 'AIzaSyAakfWDUKc-AWzkvJu5CNv1djte1Im0rQA';
-    var scopes = 'https://www.googleapis.com/auth/calendar';
+    <script src="https://apis.google.com/js/api.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="history.js"></script>
+    <script src="account.js"></script>
+    <script src="index.js">
+        //to get profile info
 
-    function handleClientLoad() {
-        gapi.client.setApiKey(apiKey);
-        window.setTimeout(checkAuth, 1);
-        checkAuth();
-    }
+    </script>
 
-    function checkAuth() {
-        gapi.auth.authorize({
-                client_id: clientId,
-                scope: scopes,
-                immediate: true
-            },
-            handleAuthResult);
-    }
+    <script>
+        var clientId = '628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com';
+        var apiKey = 'AIzaSyAakfWDUKc-AWzkvJu5CNv1djte1Im0rQA';
+        var scopes = 'https://www.googleapis.com/auth/calendar';
 
-    function handleAuthResult(authResult) {
-        var authorizeButton = document.getElementById('authorize-button');
-        if (authResult) {
-            authorizeButton.style.color = 'green';
-            makeApiCall();
-        } else {
-            authorizeButton.style.color = 'yellow';
-            authorizeButton.onclick = handleAuthClick;
+        function handleClientLoad() {
+            gapi.client.setApiKey(apiKey);
+            window.setTimeout(checkAuth, 1);
+            checkAuth();
         }
-    }
 
-    function handleAuthClick(event) {
-        gapi.auth.authorize({
-                client_id: clientId,
-                scope: scopes,
-                immediate: false
-            },
-            handleAuthResult);
-        return false;
-    }
+        function checkAuth() {
+            gapi.auth.authorize({
+                    client_id: clientId,
+                    scope: scopes,
+                    immediate: true
+                },
+                handleAuthResult);
+        }
 
-</script>
+        function handleAuthResult(authResult) {
+            var authorizeButton = document.getElementById('authorize-button');
+            if (authResult) {
+                authorizeButton.style.color = 'green';
+                makeApiCall();
+            } else {
+                authorizeButton.style.color = 'yellow';
+                authorizeButton.onclick = handleAuthClick;
+            }
+        }
+
+        function handleAuthClick(event) {
+            gapi.auth.authorize({
+                    client_id: clientId,
+                    scope: scopes,
+                    immediate: false
+                },
+                handleAuthResult);
+            return false;
+        }
+
+    </script>
 </head>
 
 <body onload="loadBackgroundColor()">
@@ -97,13 +102,13 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                 <option value="12">December</option>
     </select>
 
-    <ul id='events'> </ul>
+    <ul id="events"> </ul>
     <!-- ul = 'Unorderd List', events go in here -->
 
     <div2 id="div2"> </div2>
     <!-- new list test goes in here -->
 
-    <a href='#' id='authorize-button' onclick='handleAuthClick();'>Authorize Button</a>
+    <a href="#" id="authorize-button" onclick="handleAuthClick();">Authorize Button</a>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <!--    moving the handleClientLoad() script to top of page stops it running automatically-->
 
