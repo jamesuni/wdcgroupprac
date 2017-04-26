@@ -1,8 +1,8 @@
-
-
 /* jshint browser: true */
+/*global $ */
+/*global console */
 
-
+//you cannot have a space between '/*' and 'global'
 
 function boldText() {
     "use strict";
@@ -36,8 +36,6 @@ function underlineText() {
         document.getElementById('buttonUnderline').style.backgroundColor = "lightblue";
     }
 }
-
-
 
 function chooseFont() {
     "use strict";
@@ -141,7 +139,7 @@ function testSet() {
             sessionStorage.setItem('title' + posName, getDate());
 
             //start new addition
-            sessionStorage.setItem(getDate(), document.getElementById('journalText').value)
+            sessionStorage.setItem(getDate(), document.getElementById('journalText').value);
 
             sessionStorage.setItem("fontColor" + getDate(), document.getElementById('journalText').style.color);
             sessionStorage.setItem("fontSize" + getDate(), document.getElementById('journalText').style.fontSize);
@@ -316,17 +314,6 @@ function sentence() {
             "rolling"
         ],
 
-
-        //     Math.floor((Math.random() * 100) + 1);
-        //
-        //The result could be: 52 
-        //    
-
-        //    var nounRand = ;
-        //    var nounRandTwo = );
-        //    
-        //    alert(nounRand + " vs " + nounRandTwo);
-
         selectNoun = noun[Math.floor((Math.random()) * noun.length)],
         selectNounTwo = noun[Math.floor((Math.random()) * noun.length)],
 
@@ -339,14 +326,6 @@ function sentence() {
 
         answer = "\"The " + selectAdjective + " " + selectNoun + " was " + selectAdverb + " " + selectVerb + " the " + selectAdjectiveTwo + " " + selectNounTwo + " when...\"";
 
-    //    alert(answer);
-
     document.getElementById('randomBox').innerHTML = answer;
 
-    //    return 
-
-
 }
-
-
-
