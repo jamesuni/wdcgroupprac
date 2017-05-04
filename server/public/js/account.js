@@ -104,76 +104,33 @@
 //
 //}
 
-//the fact it is type 'password' is causing it to block actions, like 'alert(pasword)'  
-//    else if (document.getElementById("paswordText").value == "")
-//    {
-//                document.getElementById("submitStatus").style.color = "red";
-//                document.getElementById("submitStatus").innerHTML = "Submission error: enter your password";
-//    }
+    // type 'password' is causing it to block actions, like 'alert(pasword)'  
+    //    else if (document.getElementById("paswordText").value == "")
+    //    {
+    //                document.getElementById("submitStatus").style.color = "red";
+    //                document.getElementById("submitStatus").innerHTML = "Submission error: enter your password";
+    //    }
 
 
-//set default color, size and style of journal text for new.html
+function loadLogin() {
+    "use strict";
+    
+    if (sessionStorage.getItem('emailText') !== null) {
+        document.getElementById("loginBox").innerHTML = "Logged in as: [" + sessionStorage.getItem('emailText') + "]";
+        document.getElementById("loginBox").style.color = "blue";
 
-//this function could actually be responsible for loadimg all default settings.
-function loadBackgroundColor() {
-    if (localStorage.getItem("backgroundColor") != null) {
-        console.log("backgroundColor: " + localStorage.getItem("backgroundColor"));
-        document.body.style.background = localStorage.getItem("backgroundColor");
+
+        var element = document.createElement("button"),
+            foo = document.getElementById("loginBox");
+
+
+        element.innerText = "Logout";
+        element.id = "logout";
+        element.onclick = function () {
+            sessionStorage.removeItem("emailText");
+            sessionStorage.removeItem("passwordText");
+            window.location.reload(false);
+        };
+        foo.appendChild(element);
     }
-
-    if (localStorage.getItem("textColor") != null) {
-        console.log("textColor: " + localStorage.getItem("textColor"));
-
-        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
-            var title = document.getElementsByTagName("h2")[i];
-            //            title.style.font = "Impact"; //why is 'font' not working??
-            title.style.color = localStorage.getItem("textColor");
-
-        }
-
-        for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
-            var title = document.getElementsByTagName("h1")[i];
-            //            title.style.font = "italic bold 20px";
-            title.style.color = localStorage.getItem("textColor");
-
-        }
-//        document.body.style.background = localStorage.getItem("textColor");
-    }
-}
-
-function selectDefaultStyle() {
-    //    ....TODO
-}
-
-//select default background color for style.css
-function selectBackground() {
-    //    alert("selectBackground");
-    document.body.style.background = document.getElementById("selectBackground").value;
-    console.log("document background color changed to: " + document.getElementById("selectBackground").value);
-    localStorage.setItem("backgroundColor", document.getElementById("selectBackground").value);
-}
-
-function selectTextColor() {
-    console.log("selectTextColor");
-    for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
-        var title = document.getElementsByTagName("h2")[i];
-        //            title.style.font = "Impact"; //why is 'font' not working??
-        title.style.color = document.getElementById("selectTextColor").value;
-
-    }
-    for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
-        var title = document.getElementsByTagName("h1")[i];
-        //            title.style.font = "italic bold 20px";
-        title.style.color = document.getElementById("selectTextColor").value;
-
-    }
-
-    localStorage.setItem("textColor", document.getElementById("selectTextColor").value);
-
-    //    document.getElementsByTagName("h1").style.font = "Sansita One";
-    //    alert("selectTitle");
-}
-
-function selectTitle() {
-    //... TODO
 }
