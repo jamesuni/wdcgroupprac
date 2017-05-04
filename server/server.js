@@ -44,4 +44,8 @@ app.get('/new', (req, res) => {
   res.sendFile(__dirname + '/public/html/new.html')
 })
 
-console.log('Server running');
+app.get('/ajax', (req, res) => {
+  res.sendFile(__dirname + '/public/html/ajax.xml')
+})
+
+console.log('Server running. to adjust settings see file server.js');
