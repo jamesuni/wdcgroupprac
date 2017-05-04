@@ -1,136 +1,164 @@
 /* jshint browser: true */
+/*global $ */
+/*global console */
+/*global gapi */
 
-//pageSignUp.js
-//verifyEmail() ----- checks the text entered is in an 'email address' format
-//verifyPassword() ----- checks the text entered is < 8 chars, and has numbers and symbols
-//verifyLogin() ---- checks that verifyEmail() and verifyPassword() are true, then logs person in and stores their login info. otherwise, prompts user why login failed.
-
-//function verifyEmail() {
-//    "use strict";
-//
-//    var stringEmail = document.getElementById('emailText').value,
-//        containsSign = stringEmail.search('@'),
-//        containsDot = stringEmail.search(/\./); //.search('.') does not work as '.' is Regular Expression for 'any', so if the string contains anything, it will return true
-//
-//    if (containsSign === -1) {
-//        document.getElementById('emailText').style.borderColor = "red";
-//        document.getElementById('emailText').value = "";
-//        document.getElementById('emailText').placeholder = "(must contain '@')";
-//        return false;
-//    } else if (containsDot === -1) {
-//        document.getElementById('emailText').style.borderColor = "red";
-//        document.getElementById('emailText').value = "";
-//        document.getElementById('emailText').placeholder = "(must contain '.')";
-//        return false;
-//    } else {
-//        document.getElementById('emailText').style.borderColor = "blue";
-//        return true;
-//    }
-//}
-//
-//
-//function verifyPassword() {
-//    "use strict";
-//    var stringPassword = document.getElementById('passwordText').value,
-//        numberArray = "0123456789",
-//        symbolArray = "!@#$%^&*<>?`~|:;().,{}[]",
-//        containsNumber = false,
-//        containsSymbol = false,
-//        i = 0,
-//        j = 0;
-//
-//    for (i = 0; i < stringPassword.length; i += 1) {
-//        //note it is just 'i = 0' not 'int i = 0'
-//        //NUMBERS
-//        for (j = 0; j < numberArray.length; j += 1) {
-//            if (stringPassword.charAt(i) === numberArray.charAt(j)) {
-//                containsNumber = true;
-//            }
-//        }
-//
-//        //SYMBOLS
-//        for (j = 0; j < symbolArray.length; j += 1) {
-//            if (stringPassword.charAt(i) === symbolArray.charAt(j)) {
-//                containsSymbol = true;
-//            }
-//        }
-//    }
-//
-//
-//    if (stringPassword.length < 6) {
-//        document.getElementById('passwordText').style.borderColor = "red";
-//        document.getElementById('passwordText').value = "";
-//        document.getElementById('passwordText').placeholder = "(6 letters or more)";
-//    } else if (containsNumber === false) {
-//        document.getElementById('passwordText').style.borderColor = "red";
-//        document.getElementById('passwordText').value = "";
-//        document.getElementById('passwordText').placeholder = "(must contain a number)";
-//    } else if (containsSymbol === false) {
-//        document.getElementById('passwordText').style.borderColor = "red";
-//        document.getElementById('passwordText').value = "";
-//        document.getElementById('passwordText').placeholder = "(must contain a symbol)";
-//    } else {
-//        document.getElementById('passwordText').style.borderColor = "blue";
-//    }
-//}
-//
-//
-//
-//
-//
-//function verifyLogin() {
-//    "use strict";
-//
-//    document.getElementById("submitStatus").style.background = "white";
-//    //    alert(document.getElementById("paswordText").value); //doesn't work! because it is password type?
-//
-//    //    Boolean isEmailValid = verifyEmail; //causing error
-//    var isEmailValid = verifyEmail(); //NOT WORKING. WHY?
-//
-//    if (document.getElementById("emailText").value === "") {
-//        document.getElementById("submitStatus").style.color = "red";
-//        document.getElementById("submitStatus").innerHTML = "Submission error: enter an email address!";
-//    } else if (isEmailValid === false) {
-//        //NOT WORKING. WHY?
-//        document.getElementById("submitStatus").style.color = "red";
-//        document.getElementById("submitStatus").innerHTML = "Submission error: email address was not valid.";
-//    } else {
-//        sessionStorage.setItem('emailText', document.getElementById('emailText').value);
-//
-//        document.getElementById("submitStatus").style.color = "green";
-//        document.getElementById("submitStatus").innerHTML = "Submission successful! You are now logged in.";
-//    }
-//
-//
-//}
-
-    // type 'password' is causing it to block actions, like 'alert(pasword)'  
-    //    else if (document.getElementById("paswordText").value == "")
-    //    {
-    //                document.getElementById("submitStatus").style.color = "red";
-    //                document.getElementById("submitStatus").innerHTML = "Submission error: enter your password";
-    //    }
-
-
-function loadLogin() {
+//this function loads all default settings.
+function loadBackgroundColor() {
     "use strict";
-    
-    if (sessionStorage.getItem('emailText') !== null) {
-        document.getElementById("loginBox").innerHTML = "Logged in as: [" + sessionStorage.getItem('emailText') + "]";
-        document.getElementById("loginBox").style.color = "blue";
 
-
-        var element = document.createElement("button"),
-            foo = document.getElementById("loginBox");
-
-
-        element.innerText = "Logout";
-        element.id = "logout";
-        element.onclick = function () {
-            sessionStorage.removeItem("emailText");
-            sessionStorage.removeItem("passwordText");
-            window.location.reload(false);
-        };
-        foo.appendChild(element);
+    if (localStorage.getItem("backgroundColor") !== null) {
+        console.log("backgroundColor: " + localStorage.getItem("backgroundColor"));
+        document.body.style.background = localStorage.getItem("backgroundColor");
     }
+
+    if (localStorage.getItem("textColor") !== null) {
+        console.log("textColor: " + localStorage.getItem("textColor"));
+
+        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
+            var title = document.getElementsByTagName("h2")[i];
+            //            title.style.font = "Impact"; //why is 'font' not working??
+            title.style.color = localStorage.getItem("textColor");
+
+        }
+
+        for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
+            var title = document.getElementsByTagName("h1")[i];
+            //            title.style.font = "italic bold 20px";
+            title.style.color = localStorage.getItem("textColor");
+
+        }
+        //        document.body.style.background = localStorage.getItem("textColor");
+    }
+
+    var title = document.getElementById("pageTitle");
+
+    if (localStorage.getItem("titleStyle") == "retro") {
+        title.textContent = "Ye Olde Printingus Pressus";
+        title.style.fontSize = "50px";
+        title.style.textDecoration = "underline";
+        title.style.fontStyle = "normal";
+        title.style.color = localStorage.getItem("textColor");
+    }
+    if (localStorage.getItem("titleStyle") == "futuristic") {
+        title.textContent = "iJournal 2.0 [Beta]";
+        title.style.fontSize = "50px";
+        title.style.fontStyle = "italic";
+        title.style.color = localStorage.getItem("textColor");
+    }
+    if (localStorage.getItem("titleStyle") == "normal") {
+        title.textContent = "Journal Website";
+        title.style.fontSize = "50px";
+        title.style.fontStyle = "normal";
+        title.style.color = localStorage.getItem("textColor");
+    }
+
+    for (var i = 0; i < document.getElementsByTagName('nav').length; i += 1) {
+        var button = document.getElementsByTagName("nav")[i];
+        button.style.color = localStorage.getItem("textColor");
+    }
+
+} //func
+
+function selectDefaultStyle() {
+    //    ....TODO
 }
+
+//select default background color for style.css
+function selectBackground() {
+    document.body.style.background = document.getElementById("selectBackground").value;
+    console.log("document background color changed to: " + document.getElementById("selectBackground").value);
+    localStorage.setItem("backgroundColor", document.getElementById("selectBackground").value);
+}
+
+function selectTextColor() {
+    console.log("selectTextColor");
+    for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
+        var title = document.getElementsByTagName("h2")[i];
+        //            title.style.font = "Impact"; //why is 'font' not working??
+        title.style.color = document.getElementById("selectTextColor").value;
+    }
+    for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
+        var title = document.getElementsByTagName("h1")[i];
+        //            title.style.font = "italic bold 20px";
+        title.style.color = document.getElementById("selectTextColor").value;
+    }
+
+    localStorage.setItem("textColor", document.getElementById("selectTextColor").value);
+}
+
+function selectTitle() {
+
+    var title = document.getElementById("pageTitle");
+    if (document.getElementById("selectTitle").value === "retro") {
+        title.textContent = "Ye Olde Printingus Pressus";
+        title.style.fontSize = "50px";
+        title.style.textDecoration = "underline";
+        title.style.color = localStorage.getItem("textColor");
+    }
+    if (document.getElementById("selectTitle").value === "futuristic") {
+        title.textContent = "iJournal 2.0 [Beta]";
+        title.style.fontSize = "50px";
+        title.style.fontStyle = "italic";
+        title.style.color = localStorage.getItem("textColor");
+    }
+    if (document.getElementById("selectTitle").value === "normal") {
+        title.textContent = "Journal Website";
+        title.style.fontSize = "50px";
+        title.style.fontStyle = "normal";
+        title.style.color = localStorage.getItem("textColor");
+    }
+
+    localStorage.setItem("titleStyle", document.getElementById("selectTitle").value);
+}
+
+function ajaxTest() {
+    console.log("ajaxTest()");
+
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("submitStatus").innerHTML = this.responseText;
+            }
+        };
+        xhttp.open("GET", "http://localhost:8080/ajax", true);
+        xhttp.send();
+
+//    var http = require('http');
+//    var options = {
+//        host: 'www.google.com',
+//        path: '/index.html'
+//    };
+//
+//    var req = http.get(options, function (res) {
+//        console.log('STATUS: ' + res.statusCode);
+//        console.log('HEADERS: ' + JSON.stringify(res.headers));
+//
+//        // Buffer the body entirely for processing as a whole.
+//        var bodyChunks = [];
+//        res.on('data', function (chunk) {
+//            // You can process streamed parts here...
+//            bodyChunks.push(chunk);
+//        }).on('end', function () {
+//            var body = Buffer.concat(bodyChunks);
+//            console.log('BODY: ' + body);
+//            // ...and/or process the entire body here.
+//        })
+//    });
+//
+//    req.on('error', function (e) {
+//        console.log('ERROR: ' + e.message);
+//    });
+
+}
+
+
+
+
+
+
+
+
+
+
+
