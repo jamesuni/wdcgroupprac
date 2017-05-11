@@ -75,6 +75,18 @@ connection.connect(function (err) {
     } else {
         console.log("Error connecting database ... nn");
     }
+
+    
+    //this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
+    var queryString = 'SELECT * FROM settings';
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+
+        for (var i in rows) {
+            console.log('Email[' + i + "] = " + rows[i].Email + " BackgroundColor = " + rows[i].BackgroundColor);
+        }
+    });
+
 });
 
 
