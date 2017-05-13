@@ -54,13 +54,6 @@ app.get('/account', (req, res) => {
     res.sendFile(__dirname + '/public/html/account.html')
 })
 
-app.post('/login', function (req, res) {
-    var user_name = req.body.user;
-    var password = req.body.password;
-    console.log("User name = " + user_name + ", password = " + password);
-    res.end("yes");
-});
-
 
 var mysql = require('mysql');
 var connection = mysql.createConnection({
@@ -69,6 +62,31 @@ var connection = mysql.createConnection({
     password: '',
     database: 'test'
 });
+
+
+
+app.post('/login', function (req, res) {
+    var user_name = req.body.user;
+    var password = req.body.password;
+    var backgroundColor = req.body.backgroundColor;
+    var textColor = req.body.textColor;
+
+    //    var backgroundColor = req.body.backgroundColor;
+    //console.log("Password = " + password, " backgroundColor: " + backgroundColor);
+
+    console.log("backgroundColor = " + backgroundColor + " textColor = " + textColor);
+
+    //here, set the row with the same email address as logged in
+
+
+    //this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
+    var queryString = "UPDATE settings SET BackgroundColor = '" + backgroundColor + "', TextColor= '" + textColor + "' WHERE Email = 'bc@gmail.com';";
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+    });
+    res.end("yes");
+});
+
 
 
 connection.connect(function (err) {
@@ -90,10 +108,6 @@ connection.connect(function (err) {
     });
 
 });
-
-
-//GOAL: get the 'background color' property to be updated from client->server->database (and also changable by user)
-
 
 
 
