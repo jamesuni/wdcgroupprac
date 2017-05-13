@@ -65,27 +65,37 @@ var connection = mysql.createConnection({
 
 
 
+//this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
 app.post('/login', function (req, res) {
-    var user_name = req.body.user;
-    var password = req.body.password;
+
     var backgroundColor = req.body.backgroundColor;
     var textColor = req.body.textColor;
 
-    //    var backgroundColor = req.body.backgroundColor;
-    //console.log("Password = " + password, " backgroundColor: " + backgroundColor);
-
     console.log("backgroundColor = " + backgroundColor + " textColor = " + textColor);
 
-    //here, set the row with the same email address as logged in
-
-
-    //this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
     var queryString = "UPDATE settings SET BackgroundColor = '" + backgroundColor + "', TextColor= '" + textColor + "' WHERE Email = 'bc@gmail.com';";
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
     });
     res.end("yes");
 });
+
+
+app.post('/email', function (req, res) {
+
+    var email = req.body.email;
+    console.log("email = " + email);
+
+    var queryString = "INSERT INTO settings VALUES('" + email + "', 'grey', 'black');";
+
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+    });
+
+    res.end("yes");
+});
+
+
 
 
 
@@ -95,7 +105,6 @@ connection.connect(function (err) {
     } else {
         console.log("Error connecting database ... nn");
     }
-
 
     //this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
     var queryString = 'SELECT * FROM settings';
@@ -108,6 +117,8 @@ connection.connect(function (err) {
     });
 
 });
+
+
 
 
 
