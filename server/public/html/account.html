@@ -12,19 +12,32 @@
     <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
-    <script src="Google.js"> </script>
+        < script src = "Google.js" >
+
+    </script>
     <script src="account.js"></script>
 
+
+
     <script>
+        //                backColor = $("#selectBackground").val();
+        //                backgroundColor: backColor;
         $(document).ready(function() {
             var user, pass;
             $("#submit").click(function() {
                 user = $("#user").val();
                 pass = $("#password").val();
-
+                backColor = $("#selectBackground option:selected").text(); 
+                textColor = $("#selectTextColor option:selected").text(); 
+                
+                console.log("textColor = " + textColor);
+//                console.log("backgroundColor = " + backColor);
+                
                 $.post("http://localhost:8080/login", {
                     user: user,
-                    password: pass
+                    password: pass,
+                    backgroundColor: backColor,
+                    textColor: textColor
                 }, function(data) {
                     if (data === 'done') {
                         alert("login success");
@@ -33,6 +46,10 @@
             });
         });
     </script>
+
+
+
+
 
 </head>
 
@@ -54,6 +71,7 @@
     <h2> Select background color </h2>
 
     <select id="selectBackground" onchange="selectBackground()">
+                <option value="grey" >  Grey  </option>
                 <option value="black" > Black </option> <!-- cannot style <option> elements -->
                 <option value="blue" > Blue </option>
                 <option value="red"   > Red </option>
@@ -61,7 +79,6 @@
                 <option value="yellow" >Yellow  </option>
                 <option value="pink"  > Pink  </option>
                 <option value="cyan" >  Cyan  </option>
-                <option value="grey" >  Grey  </option>
                 <option value="orange" >Orange  </option>
                 <option value="brown" > Brown  </option>
                 <option value="white" > White  </option>
@@ -154,13 +171,13 @@
     <h2> Feline information intake level </h2>
 
     <input type="radio" name="yes" onchange="ajaxTest()" value="no" checked> Receive mail about cats <br>
-    <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
-
+    <input type="radio" name="yes" value="no"> Receive more mail about cats <br> 
     
-    AJAX/Database test: text submitted here will appear on the server-computer command-line <br>
+<!--
     <input type="TEXT" id="user" size="40"><br>
     <input type="password" id="password" size="40"><br>
-    <input type="button" id="submit" value="Submit">
+    <input type="button" id="submit" value="Submit Settings">
+-->
 
 
     <div id="submitStatus"> </div>
