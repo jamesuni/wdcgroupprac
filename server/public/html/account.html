@@ -11,8 +11,28 @@
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-    <script src="Google.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
+    <script src="Google.js"> </script>
     <script src="account.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var user, pass;
+            $("#submit").click(function() {
+                user = $("#user").val();
+                pass = $("#password").val();
+
+                $.post("http://localhost:8080/login", {
+                    user: user,
+                    password: pass
+                }, function(data) {
+                    if (data === 'done') {
+                        alert("login success");
+                    }
+                });
+            });
+        });
+    </script>
 
 </head>
 
@@ -136,6 +156,11 @@
     <input type="radio" name="yes" onchange="ajaxTest()" value="no" checked> Receive mail about cats <br>
     <input type="radio" name="yes" value="no"> Receive more mail about cats <br> <br>
 
+    
+    AJAX/Database test: text submitted here will appear on the server-computer command-line <br>
+    <input type="TEXT" id="user" size="40"><br>
+    <input type="password" id="password" size="40"><br>
+    <input type="button" id="submit" value="Submit">
 
 
     <div id="submitStatus"> </div>
