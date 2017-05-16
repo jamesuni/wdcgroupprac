@@ -70,10 +70,11 @@ app.post('/login', function (req, res) {
 
     var backgroundColor = req.body.backgroundColor;
     var textColor = req.body.textColor;
+    var email = req.body.email;
 
-    console.log("backgroundColor = " + backgroundColor + " textColor = " + textColor);
+    console.log("email = " + email + " backgroundColor = " + backgroundColor + " textColor = " + textColor);
 
-    var queryString = "UPDATE settings SET BackgroundColor = '" + backgroundColor + "', TextColor= '" + textColor + "' WHERE Email = 'bc@gmail.com';";
+    var queryString = "UPDATE settings SET BackgroundColor = '" + backgroundColor + "', TextColor= '" + textColor + "' WHERE Email = '" + email + "'";
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
     });
@@ -81,12 +82,13 @@ app.post('/login', function (req, res) {
 });
 
 
+//called when user logs in. If email address does not exist in database, new email and default settings are added.
 app.post('/email', function (req, res) {
 
     var email = req.body.email;
     console.log("email = " + email);
 
-    var queryString = "INSERT INTO settings VALUES('" + email + "', 'grey', 'black');";
+    var queryString = "INSERT IGNORE INTO settings VALUES('" + email + "', 'grey', 'black');";
 
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
@@ -98,7 +100,7 @@ app.post('/email', function (req, res) {
 
 
 
-
+//-you could store the person's email address in temp. storage
 connection.connect(function (err) {
     if (!err) {
         console.log("mySQL database connected....");
