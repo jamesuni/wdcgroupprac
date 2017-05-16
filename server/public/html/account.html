@@ -20,24 +20,20 @@
 
 
     <script>
-        //                backColor = $("#selectBackground").val();
-        //                backgroundColor: backColor;
         $(document).ready(function() {
-            var user, pass;
             $("#submit").click(function() {
-                user = $("#user").val();
-                pass = $("#password").val();
-                backColor = $("#selectBackground option:selected").text(); 
-                textColor = $("#selectTextColor option:selected").text(); 
-                
-                console.log("textColor = " + textColor);
+
+                var backColor = $("#selectBackground option:selected").text();
+                var textColor = $("#selectTextColor option:selected").text();
+                var email = localStorage.getItem('email');
+
+//                console.log("textColor = " + textColor);
 //                console.log("backgroundColor = " + backColor);
-                
+
                 $.post("http://localhost:8080/login", {
-                    user: user,
-                    password: pass,
                     backgroundColor: backColor,
-                    textColor: textColor
+                    textColor: textColor,
+                    email: email
                 }, function(data) {
                     if (data === 'done') {
                         alert("login success");
@@ -45,6 +41,7 @@
                 });
             });
         });
+
     </script>
 
 
@@ -171,13 +168,9 @@
     <h2> Feline information intake level </h2>
 
     <input type="radio" name="yes" onchange="ajaxTest()" value="no" checked> Receive mail about cats <br>
-    <input type="radio" name="yes" value="no"> Receive more mail about cats <br> 
-    
-<!--
-    <input type="TEXT" id="user" size="40"><br>
-    <input type="password" id="password" size="40"><br>
+    <input type="radio" name="yes" value="no"> Receive more mail about cats <br>
+
     <input type="button" id="submit" value="Submit Settings">
--->
 
 
     <div id="submitStatus"> </div>
