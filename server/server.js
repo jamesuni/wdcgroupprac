@@ -65,14 +65,14 @@ var connection = mysql.createConnection({
 
 
 
-//this is based on a SQL table called 'settings' that contains two columns: 'Email' and 'BackgroundColor'
+//settings are SAVED from client (client -> SQL)
 app.post('/login', function (req, res) {
 
     var backgroundColor = req.body.backgroundColor;
     var textColor = req.body.textColor;
     var email = req.body.email;
 
-    console.log("email = " + email + " backgroundColor = " + backgroundColor + " textColor = " + textColor);
+    console.log("POST /login: email = " + email + " backgroundColor = " + backgroundColor + " textColor = " + textColor);
 
     var queryString = "UPDATE settings SET BackgroundColor = '" + backgroundColor + "', TextColor= '" + textColor + "' WHERE Email = '" + email + "'";
     connection.query(queryString, function (err, rows, fields) {
@@ -82,11 +82,41 @@ app.post('/login', function (req, res) {
 });
 
 
+//settings are LOADED into client (SQL -> client)
+app.post('/loadsettings', function (req, res) {
+
+    var email = req.body.email;
+    var result = "resultError :(";
+    
+    var queryString = "SELECT * FROM settings WHERE Email = '" + email + "';";
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+
+        result = JSON.stringify(rows[0]); //you are only selecting 1 row in total, so 'rows[0]' and 'rows' are same
+
+        console.log("POST /loadsettings: " + result);
+        console.log("rows[0].Email = " + rows[0].Email);
+        console.log("rows[0].BackgroundColor = " + rows[0].BackgroundColor);
+        console.log("rows[0].TextColor = " + rows[0].TextColor);
+        
+        //is there a need for 'res.send(string s)' ??  
+        //you can't have more than one '.send()' or it throws 'Can't set headers after they are sent'
+        res.end(result); //.end() can only accepy a string or buffer as an argument
+    });
+  
+    //these lines causes the body of the server.js callback function to never fire. 
+//    res.contentType('application/json');
+//    res.send(rows); //still does not work with 'rows'
+
+});
+//info on callbacks: http://stackoverflow.com/questions/15635791/nodejs-mysql-connection-query-return-value-to-function-call#15636208
+//understanding 'req' and 'res': http://stackoverflow.com/questions/4696283/what-are-res-and-req-parameters-in-express-functions#4696338   
+
 //called when user logs in. If email address does not exist in database, new email and default settings are added.
 app.post('/email', function (req, res) {
 
     var email = req.body.email;
-    console.log("email = " + email);
+    console.log("POST /email: email = " + email);
 
     var queryString = "INSERT IGNORE INTO settings VALUES('" + email + "', 'grey', 'black');";
 
@@ -96,6 +126,8 @@ app.post('/email', function (req, res) {
 
     res.end("yes");
 });
+
+
 
 
 
