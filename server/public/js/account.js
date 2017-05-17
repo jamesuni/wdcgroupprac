@@ -6,30 +6,71 @@
 //this function loads all default settings.
 function loadBackgroundColor() {
     "use strict";
+    console.log("loadBackgroundColor();");
 
-    if (localStorage.getItem("backgroundColor") !== null) {
-        console.log("backgroundColor: " + localStorage.getItem("backgroundColor"));
-        document.body.style.background = localStorage.getItem("backgroundColor");
-    }
 
-    if (localStorage.getItem("textColor") !== null) {
-        console.log("textColor: " + localStorage.getItem("textColor"));
+    var storageEmail = localStorage.getItem('email');
+    console.log("storageEmail: " + storageEmail);
 
-        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
-            var title = document.getElementsByTagName("h2")[i];
-            //            title.style.font = "Impact"; //why is 'font' not working??
-            title.style.color = localStorage.getItem("textColor");
+    $.post("http://localhost:8080/loadsettings", {
+        email: storageEmail
+    }, function (data, status) { //this is the callback function. it only executes when/IF the callback occurs
 
-        }
+        console.log("data: " + data); //data is a string
+        console.log("status = " + status);
+
+        let dataJ = JSON.parse(data);
+
+        var email = $.trim(dataJ.Email).toLowerCase();
+        var backgroundColor = $.trim(dataJ.BackgroundColor).toLowerCase();
+        var textColor = $.trim(dataJ.TextColor).toLowerCase();
+
+        console.log("data.Email: [" + email + "]");
+        console.log("data.BackgroundColor: [" + backgroundColor + "]");
+        console.log("data.TextColor: [" + textColor + "]");
+
+        document.body.style.background = backgroundColor;
 
         for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
             var title = document.getElementsByTagName("h1")[i];
-            //            title.style.font = "italic bold 20px";
-            title.style.color = localStorage.getItem("textColor");
+            title.style.color = textColor;
 
         }
-        //        document.body.style.background = localStorage.getItem("textColor");
-    }
+        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
+            var title = document.getElementsByTagName("h2")[i];
+            title.style.color = textColor;
+        }
+
+    });
+
+    console.log("end of $.post(loadsettings)");
+
+    //replaced by database query
+    //    if (localStorage.getItem("backgroundColor") !== null) {
+    //        console.log("backgroundColor: " + localStorage.getItem("backgroundColor"));
+    //        document.body.style.background = localStorage.getItem("backgroundColor");
+    //        document.body.style.background = localStorage.getItem("backgroundColor");
+    //    }
+
+    //replaced by database query
+    //    if (localStorage.getItem("textColor") !== null) {
+    //        console.log("textColor: " + localStorage.getItem("textColor"));
+    //
+    //        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
+    //            var title = document.getElementsByTagName("h2")[i];
+    //            //            title.style.font = "Impact"; //why is 'font' not working??
+    //            title.style.color = localStorage.getItem("textColor");
+    //            title.style.color = localStorage.getItem("textColor");
+    //        }
+    //
+    //        for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
+    //            var title = document.getElementsByTagName("h1")[i];
+    //            //            title.style.font = "italic bold 20px";
+    //            title.style.color = localStorage.getItem("textColor");
+    //
+    //        }
+    //        //        document.body.style.background = localStorage.getItem("textColor");
+    //    }
 
     var title = document.getElementById("pageTitle");
 
@@ -115,50 +156,18 @@ function selectTitle() {
 function ajaxTest() {
     console.log("ajaxTest()");
 
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                document.getElementById("submitStatus").innerHTML = this.responseText;
-            }
-        };
-        xhttp.open("GET", "http://localhost:8080/ajax", true);
-        xhttp.send();
+    var responseString;
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("submitStatus").innerHTML = this.responseText;
+            responseString = this.responseText; //'responseXML' exists
+            //alert(responseString) //here, responseString contains the html
+        }
+    };
+    //        alert(responseString) //here, responseString is undefined
 
-//    var http = require('http');
-//    var options = {
-//        host: 'www.google.com',
-//        path: '/index.html'
-//    };
-//
-//    var req = http.get(options, function (res) {
-//        console.log('STATUS: ' + res.statusCode);
-//        console.log('HEADERS: ' + JSON.stringify(res.headers));
-//
-//        // Buffer the body entirely for processing as a whole.
-//        var bodyChunks = [];
-//        res.on('data', function (chunk) {
-//            // You can process streamed parts here...
-//            bodyChunks.push(chunk);
-//        }).on('end', function () {
-//            var body = Buffer.concat(bodyChunks);
-//            console.log('BODY: ' + body);
-//            // ...and/or process the entire body here.
-//        })
-//    });
-//
-//    req.on('error', function (e) {
-//        console.log('ERROR: ' + e.message);
-//    });
+    xhttp.open("GET", "http://localhost:8080/account.html", true);
+    xhttp.send();
 
 }
-
-
-
-
-
-
-
-
-
-
-
