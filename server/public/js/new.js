@@ -1,7 +1,7 @@
-
-
 /* jshint browser: true */
-
+/*global $ */
+/*global console */
+/*global gapi */
 
 
 function boldText() {
@@ -119,9 +119,24 @@ function getNumEntries() {
 
 function testSet() {
     "use strict";
+    console.log("testSet()");
     //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
         posName = position.toString();
+
+
+    var storageEmail = localStorage.getItem('email');
+    console.log("storageEmail: " + storageEmail);
+
+    $.post("http://localhost:8080/newentry", {
+        text: document.getElementById('journalText').value,
+        date: getDate(),
+        email: storageEmail
+    }, function (data, status) { //this is the callback function. it only executes when/IF the callback occurs
+
+        console.log("data: " + data); //data is a string
+        console.log("status = " + status);
+    });
 
 
     //––––––––––––– text that appears when the 'submit' button is pressed
@@ -141,7 +156,7 @@ function testSet() {
             sessionStorage.setItem('title' + posName, getDate());
 
             //start new addition
-            sessionStorage.setItem(getDate(), document.getElementById('journalText').value)
+            sessionStorage.setItem(getDate(), document.getElementById('journalText').value);
 
             sessionStorage.setItem("fontColor" + getDate(), document.getElementById('journalText').style.color);
             sessionStorage.setItem("fontSize" + getDate(), document.getElementById('journalText').style.fontSize);
@@ -347,6 +362,3 @@ function sentence() {
 
 
 }
-
-
-
