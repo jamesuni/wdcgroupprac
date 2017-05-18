@@ -129,6 +129,25 @@ app.post('/email', function (req, res) {
 
 
 
+app.post('/newentry', function (req, res) {
+
+    var text = req.body.text;
+    var date = req.body.date;
+    var email = req.body.email;
+    console.log("POST /newentry: text = " + text);
+    console.log("POST /newentry: getDate() = " + date + " email = " + email);
+    
+//    var queryString = "ALTER TABLE text ADD " + "Miow" + " varchar(250);"; //this works
+//    var queryString = "ALTER TABLE text ADD '" + date + "' varchar(250);"; 
+        var queryString = "ALTER TABLE IF NOT EXISTS text ADD " + "D" + " varchar(250);"; 
+    //trying this command twice throws error that crashes server 'duplicate column name'
+
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+    });
+
+    res.end("yes");
+});
 
 
 
