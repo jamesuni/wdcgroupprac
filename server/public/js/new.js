@@ -139,6 +139,7 @@ function testSet() {
     });
 
 
+    
     //––––––––––––– text that appears when the 'submit' button is pressed
     document.getElementById("submitStatus").style.background = "white";
     if (document.getElementById('journalText').value === "") {
