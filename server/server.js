@@ -87,7 +87,7 @@ app.post('/loadsettings', function (req, res) {
 
     var email = req.body.email;
     var result = "resultError :(";
-    
+
     var queryString = "SELECT * FROM settings WHERE Email = '" + email + "';";
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
@@ -98,17 +98,31 @@ app.post('/loadsettings', function (req, res) {
         console.log("rows[0].Email = " + rows[0].Email);
         console.log("rows[0].BackgroundColor = " + rows[0].BackgroundColor);
         console.log("rows[0].TextColor = " + rows[0].TextColor);
-        
+
         //is there a need for 'res.send(string s)' ??  
         //you can't have more than one '.send()' or it throws 'Can't set headers after they are sent'
         res.end(result); //.end() can only accepy a string or buffer as an argument
     });
-  
+
     //these lines causes the body of the server.js callback function to never fire. 
-//    res.contentType('application/json');
-//    res.send(rows); //still does not work with 'rows'
+    //    res.contentType('application/json');
+    //    res.send(rows); //still does not work with 'rows'
 
 });
+
+app.post('/loadentries', function (req, res) {
+
+    console.log("POST /loadentries");
+    var email = req.body.email;
+    var queryString = "SELECT * FROM text WHERE Email = '" + email + "';";
+    connection.query(queryString, function (err, rows, fields) {
+        if (err) throw err;
+        result = JSON.stringify(rows[0]); //you are only selecting 1 row in total, so 'rows[0]' and 'rows' are same
+        console.log("POST /loadsettings: " + result);
+        res.end(result); 
+    });
+});
+
 //info on callbacks: http://stackoverflow.com/questions/15635791/nodejs-mysql-connection-query-return-value-to-function-call#15636208
 //understanding 'req' and 'res': http://stackoverflow.com/questions/4696283/what-are-res-and-req-parameters-in-express-functions#4696338   
 
@@ -122,15 +136,15 @@ app.post('/email', function (req, res) {
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
     });
-    
-    
+
+
     //1. have to get the total number of items in the row?
     //unless you can make the other query work?
-    
+
     var queryStringTwo = "INSERT IGNORE INTO text (Email) VALUES ('" + email + "');";
     connection.query(queryStringTwo, function (err, rows, fields) {
         if (err) throw err;
-        
+
     });
 
     res.end("yes");
@@ -144,20 +158,20 @@ app.post('/newentry', function (req, res) {
     var date = req.body.date;
     var email = req.body.email;
     console.log("POST /newentry: getDate() = [" + date + "] email = " + email + " text = " + text);
-    
+
     var day = date.charAt(3) + date.charAt(4);
     var month = date.charAt(0) + date.charAt(1);
     var year = date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
     var newDate = "D" + day + "M" + month + "Y" + year;
-    
-    var queryString = "ALTER TABLE text ADD " + newDate + " varchar(250);"; 
+
+    var queryString = "ALTER TABLE text ADD " + newDate + " varchar(250);";
     connection.query(queryString, function (err, rows, fields) {
-//        if (err) throw err; //this error will throw whenever a duplicate column is found, and will stop server.     
+        //        if (err) throw err; //this error will throw whenever a duplicate column is found, and will stop server.     
     });
-    
+
     var queryStringTwo = "UPDATE text SET " + newDate + " = '" + text + "' WHERE Email = '" + email + "'";
     connection.query(queryStringTwo, function (err, rows, fields) {
-        if (err) throw err;        
+        if (err) throw err;
     });
 
     res.end("yes");
