@@ -119,9 +119,18 @@ app.post('/email', function (req, res) {
     console.log("POST /email: email = " + email);
 
     var queryString = "INSERT IGNORE INTO settings VALUES('" + email + "', 'grey', 'black');";
-
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
+    });
+    
+    
+    //1. have to get the total number of items in the row?
+    //unless you can make the other query work?
+    
+    var queryStringTwo = "INSERT IGNORE INTO text (Email) VALUES ('" + email + "');";
+    connection.query(queryStringTwo, function (err, rows, fields) {
+        if (err) throw err;
+        
     });
 
     res.end("yes");
@@ -134,16 +143,21 @@ app.post('/newentry', function (req, res) {
     var text = req.body.text;
     var date = req.body.date;
     var email = req.body.email;
-    console.log("POST /newentry: text = " + text);
-    console.log("POST /newentry: getDate() = " + date + " email = " + email);
+    console.log("POST /newentry: getDate() = [" + date + "] email = " + email + " text = " + text);
     
-//    var queryString = "ALTER TABLE text ADD " + "Miow" + " varchar(250);"; //this works
-//    var queryString = "ALTER TABLE text ADD '" + date + "' varchar(250);"; 
-        var queryString = "ALTER TABLE IF NOT EXISTS text ADD " + "D" + " varchar(250);"; 
-    //trying this command twice throws error that crashes server 'duplicate column name'
-
+    var day = date.charAt(3) + date.charAt(4);
+    var month = date.charAt(0) + date.charAt(1);
+    var year = date.charAt(6) + date.charAt(7) + date.charAt(8) + date.charAt(9);
+    var newDate = "D" + day + "M" + month + "Y" + year;
+    
+    var queryString = "ALTER TABLE text ADD " + newDate + " varchar(250);"; 
     connection.query(queryString, function (err, rows, fields) {
-        if (err) throw err;
+//        if (err) throw err; //this error will throw whenever a duplicate column is found, and will stop server.     
+    });
+    
+    var queryStringTwo = "UPDATE text SET " + newDate + " = '" + text + "' WHERE Email = '" + email + "'";
+    connection.query(queryStringTwo, function (err, rows, fields) {
+        if (err) throw err;        
     });
 
     res.end("yes");
@@ -151,7 +165,7 @@ app.post('/newentry', function (req, res) {
 
 
 
-//-you could store the person's email address in temp. storage
+
 connection.connect(function (err) {
     if (!err) {
         console.log("mySQL database connected....");
