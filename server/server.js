@@ -1,4 +1,5 @@
 // server.js runs content serving at a given port
+/*jshint esversion: 6 */
 
 var port = 8080;
 
@@ -19,40 +20,38 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 
-// set favicon
 //app.use(favicon(path.join(__dirname, 'public/favicon.ico')));
 app.use(favicon(path.join(__dirname, 'public/images/favicon.ico')));
 
 // start server
 app.listen(port, function () {
     console.log('Listening on ' + port + ".  To quit: [control-c]");
-})
+});
 
-// default page is index.html
 app.get('/', (req, res) => {
-    res.sendFile(__dirname + '/index.html')
-})
+    res.sendFile(__dirname + '/index.html'); //default page is index.html
+});
 
 app.get('/main', (req, res) => {
-    res.sendFile(__dirname + '/public/html/main.html')
-})
+    res.sendFile(__dirname + '/public/html/main.html');
+});
 
 app.get('/history', (req, res) => {
-    res.sendFile(__dirname + '/public/html/history.html')
-})
+    res.sendFile(__dirname + '/public/html/history.html');
+});
 
 app.get('/new', (req, res) => {
-    res.sendFile(__dirname + '/public/html/new.html')
-})
+    res.sendFile(__dirname + '/public/html/new.html');
+});
 
 app.get('/ajaxtest', (req, res) => {
-    res.sendFile(__dirname + '/public/html/ajaxtest.html')
-})
+    res.sendFile(__dirname + '/public/html/ajaxtest.html');
+});
 
 app.get('/account', (req, res) => {
     console.log(".get() account.html");
-    res.sendFile(__dirname + '/public/html/account.html')
-})
+    res.sendFile(__dirname + '/public/html/account.html');
+});
 
 
 var mysql = require('mysql');
@@ -117,7 +116,7 @@ app.post('/loadentries', function (req, res) {
     var queryString = "SELECT * FROM text WHERE Email = '" + email + "';";
     connection.query(queryString, function (err, rows, fields) {
         if (err) throw err;
-        result = JSON.stringify(rows[0]); //you are only selecting 1 row in total, so 'rows[0]' and 'rows' are same
+        var result = JSON.stringify(rows[0]); //you are only selecting 1 row in total, so 'rows[0]' and 'rows' are same
         console.log("POST /loadsettings: " + result);
         res.end(result); 
     });
@@ -137,14 +136,9 @@ app.post('/email', function (req, res) {
         if (err) throw err;
     });
 
-
-    //1. have to get the total number of items in the row?
-    //unless you can make the other query work?
-
     var queryStringTwo = "INSERT IGNORE INTO text (Email) VALUES ('" + email + "');";
     connection.query(queryStringTwo, function (err, rows, fields) {
         if (err) throw err;
-
     });
 
     res.end("yes");
@@ -166,7 +160,7 @@ app.post('/newentry', function (req, res) {
 
     var queryString = "ALTER TABLE text ADD " + newDate + " varchar(250);";
     connection.query(queryString, function (err, rows, fields) {
-        //        if (err) throw err; //this error will throw whenever a duplicate column is found, and will stop server.     
+        //        if (err) throw err; //this error will throw whenever a duplicate column is found, and will stop server.   
     });
 
     var queryStringTwo = "UPDATE text SET " + newDate + " = '" + text + "' WHERE Email = '" + email + "'";
@@ -176,7 +170,6 @@ app.post('/newentry', function (req, res) {
 
     res.end("yes");
 });
-
 
 
 
@@ -198,11 +191,6 @@ connection.connect(function (err) {
     });
 
 });
-
-
-
-
-
 
 
 
