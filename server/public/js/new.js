@@ -122,10 +122,9 @@ function testSet() {
     console.log("testSet()");
     //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
-        posName = position.toString();
-
-
-    var storageEmail = localStorage.getItem('email');
+        posName = position.toString(),
+        storageEmail = localStorage.getItem('email');
+    
     console.log("storageEmail: " + storageEmail);
 
     $.post("http://localhost:8080/newentry", {

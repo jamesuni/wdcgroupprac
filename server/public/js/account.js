@@ -10,67 +10,28 @@ function loadBackgroundColor() {
 
 
     var storageEmail = localStorage.getItem('email');
-    console.log("storageEmail: " + storageEmail);
+    //    console.log("storageEmail: " + storageEmail);
 
     $.post("http://localhost:8080/loadsettings", {
         email: storageEmail
     }, function (data, status) { //this is the callback function. it only executes when/IF the callback occurs
 
-        console.log("data: " + data); //data is a string
-        console.log("status = " + status);
-
-        let dataJ = JSON.parse(data);
-
-        var email = $.trim(dataJ.Email).toLowerCase();
-        var backgroundColor = $.trim(dataJ.BackgroundColor).toLowerCase();
-        var textColor = $.trim(dataJ.TextColor).toLowerCase();
-
-        console.log("data.Email: [" + email + "]");
-        console.log("data.BackgroundColor: [" + backgroundColor + "]");
-        console.log("data.TextColor: [" + textColor + "]");
+        var dataJ = JSON.parse(data),
+            email = $.trim(dataJ.Email).toLowerCase(),
+            backgroundColor = $.trim(dataJ.BackgroundColor).toLowerCase(),
+            textColor = $.trim(dataJ.TextColor).toLowerCase();
 
         document.body.style.background = backgroundColor;
 
         for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
             var title = document.getElementsByTagName("h1")[i];
             title.style.color = textColor;
-
         }
         for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
             var title = document.getElementsByTagName("h2")[i];
             title.style.color = textColor;
         }
-
     });
-
-    console.log("end of $.post(loadsettings)");
-
-    //replaced by database query
-    //    if (localStorage.getItem("backgroundColor") !== null) {
-    //        console.log("backgroundColor: " + localStorage.getItem("backgroundColor"));
-    //        document.body.style.background = localStorage.getItem("backgroundColor");
-    //        document.body.style.background = localStorage.getItem("backgroundColor");
-    //    }
-
-    //replaced by database query
-    //    if (localStorage.getItem("textColor") !== null) {
-    //        console.log("textColor: " + localStorage.getItem("textColor"));
-    //
-    //        for (var i = 0; i < document.getElementsByTagName("h2").length; i += 1) {
-    //            var title = document.getElementsByTagName("h2")[i];
-    //            //            title.style.font = "Impact"; //why is 'font' not working??
-    //            title.style.color = localStorage.getItem("textColor");
-    //            title.style.color = localStorage.getItem("textColor");
-    //        }
-    //
-    //        for (var i = 0; i < document.getElementsByTagName("h1").length; i += 1) {
-    //            var title = document.getElementsByTagName("h1")[i];
-    //            //            title.style.font = "italic bold 20px";
-    //            title.style.color = localStorage.getItem("textColor");
-    //
-    //        }
-    //        //        document.body.style.background = localStorage.getItem("textColor");
-    //    }
 
     var title = document.getElementById("pageTitle");
 
@@ -151,23 +112,4 @@ function selectTitle() {
     }
 
     localStorage.setItem("titleStyle", document.getElementById("selectTitle").value);
-}
-
-function ajaxTest() {
-    console.log("ajaxTest()");
-
-    var responseString;
-    var xhttp = new XMLHttpRequest();
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            document.getElementById("submitStatus").innerHTML = this.responseText;
-            responseString = this.responseText; //'responseXML' exists
-            //alert(responseString) //here, responseString contains the html
-        }
-    };
-    //        alert(responseString) //here, responseString is undefined
-
-    xhttp.open("GET", "http://localhost:8080/account.html", true);
-    xhttp.send();
-
 }

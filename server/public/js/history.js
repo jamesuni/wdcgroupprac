@@ -5,9 +5,11 @@
 
 
 function makeApiCall() {
+    "use strict";
+
     gapi.client.load('calendar', 'v3', function () {
         var request = gapi.client.calendar.events.list({
-            'calendarId': 'primary',
+            'calendarId': 'primary'
         });
 
         $("ul").empty(); //clears the list after each option change
@@ -27,7 +29,7 @@ function makeApiCall() {
                 li.appendChild(document.createTextNode(resp.items[i].start.date));
                 li.appendChild(document.createTextNode(resp.items[i].end.date));
 
-                if (dateString != undefined) {
+                if (dateString !== undefined) {
                     var splitString = dateString.split('-');
                     var eventYear = splitString[0];
                     var eventMonth = splitString[1];
@@ -57,7 +59,7 @@ function loadBoxes() {
 
     $("div2").empty(); //clears the list after each option change
 
-    var div = document.getElementById("div2")
+    var div = document.getElementById("div2");
     var m = document.getElementById("selectMonth");
     var y = document.getElementById("selectYear");
     var valueMonth = m.options[m.selectedIndex].value;
@@ -79,9 +81,9 @@ function loadBoxes() {
             length = 30; //april, june, september & november have 30 days
         }
 
-        for (i = 1; i <= length; i += 1) {
+        for (var i = 1; i <= length; i += 1) {
 
-            inputJournal = document.createElement("textarea");
+            var inputJournal = document.createElement("textarea");
             inputJournal.cols = "15";
             inputJournal.rows = "4";
             inputJournal.style.resize = "none";
@@ -97,12 +99,16 @@ function loadBoxes() {
 
             var found = data.search(dateString);
             if (found > -1) {
-                inputJournal.value = data; //entry text goes here
-                //divide into substrings using ["] as a divider, then it will be a particlar row
+
+                var subData = data.substr(found, data.length - found);
+                var dataArray = subData.split("\""); //using ["] as divider
+
+                inputJournal.value = dataArray[2];
+
                 console.log("entry found for day: " + dateString);
-                var dataArray = data.split("\"");
-                console.log("dataArray[7] = " + dataArray[7]);
-                inputJournal.value = dataArray[7];
+                console.log("subData: " + subData);
+                console.log("dataArray[2] = " + dataArray[2]);
+
             }
 
             div.appendChild(inputJournal);
