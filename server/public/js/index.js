@@ -30,7 +30,7 @@ function onSignIn(googleUser) {
         }
     });
 
-    window.location.replace('main.html');
+    window.location.replace('new.html');
 }
 
 // controls the functionality of the register button
