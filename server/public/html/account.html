@@ -21,14 +21,12 @@
 
     <script>
         $(document).ready(function() {
+
             $("#submit").click(function() {
 
                 var backColor = $("#selectBackground option:selected").text();
                 var textColor = $("#selectTextColor option:selected").text();
                 var email = localStorage.getItem('email');
-
-//                console.log("textColor = " + textColor);
-//                console.log("backgroundColor = " + backColor);
 
                 $.post("http://localhost:8080/login", {
                     backgroundColor: backColor,
@@ -60,7 +58,9 @@
     <nav>
         <input class="mainButton" type="button" onclick="location.href='history.html';" value="History" />
         <input id="mainButtonSelected" type="button" onclick="location.href='account.html';" value="Account" />
-        <input class="mainButton" type="button" onclick="location.href='new.html';" value="+" />
+        <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" />    
+        <input class="mainButton" type="button" onclick="location.href='event.html';" value="Event +" />
+
     </nav>
 
 
