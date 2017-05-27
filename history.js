@@ -25,9 +25,8 @@ function makeApiCall() {
                 var dateString = resp.items[i].start.date;
 
                 li.appendChild(document.createTextNode(resp.items[i].summary));
-                li.appendChild(document.createTextNode(resp.items[i].etag));
+                li.appendChild(document.createTextNode(" –––––– "));
                 li.appendChild(document.createTextNode(resp.items[i].start.date));
-                li.appendChild(document.createTextNode(resp.items[i].end.date));
 
                 if (dateString !== undefined) {
                     var splitString = dateString.split('-');

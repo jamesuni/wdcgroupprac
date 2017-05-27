@@ -132,7 +132,6 @@ function testSet() {
         posName = position.toString(),
         storageEmail = localStorage.getItem('email'),
         basicText = document.getElementById('journalText').value;
-
     
     console.log("storageEmail: " + storageEmail);
 
