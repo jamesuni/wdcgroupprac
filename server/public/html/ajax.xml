@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-Here is the default location for a command like:
-
-   xhttp.open("GET", "ajax_info.txt", true);
-
-
