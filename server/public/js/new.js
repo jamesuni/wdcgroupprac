@@ -38,7 +38,6 @@ function underlineText() {
 }
 
 
-
 function chooseFont() {
     "use strict";
     document.getElementById('journalText').style.fontFamily = document.getElementById('textFont').value;
@@ -53,10 +52,6 @@ function chooseColor() {
     "use strict";
     document.getElementById('journalText').style.color = document.getElementById('textColor').value;
 }
-
-
-
-
 
 
 
@@ -96,9 +91,6 @@ function journalTextClick() {
 
 
 
-
-
-
 function getNumEntries() {
     "use strict";
     var numEntries = 0,
@@ -113,32 +105,46 @@ function getNumEntries() {
 }
 
 
-
-
-
-
 function testSet() {
     "use strict";
     console.log("testSet()");
     //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
         posName = position.toString(),
-        storageEmail = localStorage.getItem('email');
-    
+        storageEmail = localStorage.getItem('email'),
+        text = document.getElementById('journalText').value,
+        fontStyle = document.getElementById('journalText').style.fontStyle,
+        fontWeight = document.getElementById('journalText').style.fontWeight,
+        fontSize = document.getElementById('journalText').style.fontSize,
+        fontFamily = document.getElementById('journalText').style.fontFamily,
+        textDecoration = document.getElementById('journalText').style.textDecoration,
+        color = document.getElementById('journalText').style.color,
+        jsonString = "{ text: '" + text + "', fontStyle: '" + fontStyle + "', fontWeight: '" + fontWeight + "', fontSize: '" + fontSize + "', fontFamily: '" + fontFamily + "', textDecoration: '" + textDecoration + "', color: '" + color + "'}";
+        
     console.log("storageEmail: " + storageEmail);
+    
+
+    
+    console.log("jsonString: " + jsonString);
+        
+    //for history.html:
+    //var json = JSON.stringify(eval("(" + str + ")"));
+
+    text = text.replace(/;/g, ',');
+    text = text.replace(/\(/g, "[");
+    text = text.replace(/\)/g, "]");
 
     $.post("http://localhost:8080/newentry", {
-        text: document.getElementById('journalText').value,
+        text: text,
         date: getDate(),
         email: storageEmail
     }, function (data, status) { //this is the callback function. it only executes when/IF the callback occurs
 
+        console.log("text: " + text);
         console.log("data: " + data); //data is a string
         console.log("status = " + status);
     });
 
-
-    
     //––––––––––––– text that appears when the 'submit' button is pressed
     document.getElementById("submitStatus").style.background = "white";
     if (document.getElementById('journalText').value === "") {
@@ -148,72 +154,8 @@ function testSet() {
     } else {
         document.getElementById("submitStatus").style.color = "green";
         document.getElementById("submitStatus").innerHTML = "Submission successful! Total journal entries: " + posName;
-
-
-        sessionStorage.setItem(posName, document.getElementById('journalText').value);
-
-        if (document.getElementById('titleText').value === "") { //if user has NOT entered title
-            sessionStorage.setItem('title' + posName, getDate());
-
-            //start new addition
-            sessionStorage.setItem(getDate(), document.getElementById('journalText').value);
-
-            sessionStorage.setItem("fontColor" + getDate(), document.getElementById('journalText').style.color);
-            sessionStorage.setItem("fontSize" + getDate(), document.getElementById('journalText').style.fontSize);
-            sessionStorage.setItem("fontFamily" + getDate(), document.getElementById('journalText').style.fontFamily);
-
-            console.log("item set using tag [" + getDate() + "]");
-            console.log("text should exist: " + sessionStorage.getItem(getDate()));
-            console.log("fontColor tag: " + "fontColor" + getDate());
-            //end new addition
-        } else { //if user HAS entered title
-            sessionStorage.setItem('title' + posName, document.getElementById('titleText').value);
-
-            //start new addition
-            sessionStorage.setItem(document.getElementById('titleText').value, document.getElementById('journalText').value);
-
-            sessionStorage.setItem("fontColor" + document.getElementById('titleText').value, document.getElementById('journalText').style.color);
-            sessionStorage.setItem("fontSize" + document.getElementById('titleText').value, document.getElementById('journalText').style.fontSize);
-            sessionStorage.setItem("fontFamily" + document.getElementById('titleText').value, document.getElementById('journalText').style.fontFamily);
-
-            console.log("item set using tag [" + document.getElementById('titleText').value + "]");
-            console.log("text should exist: " + sessionStorage.getItem(document.getElementById('titleText').value));
-            console.log("fontColor tag: " + "fontColor" + document.getElementById('titleText').value);
-            //end new addition
-        }
-
-        if (document.getElementById('journalText').style.fontWeight === "bold") {
-            sessionStorage.setItem("bold" + posName, "true");
-        } else {
-            sessionStorage.setItem("bold" + posName, "false");
-        }
-
-        if (document.getElementById('journalText').style.fontStyle === "italic") {
-            sessionStorage.setItem("italic" + posName, "true");
-        } else {
-            sessionStorage.setItem("italic" + posName, "false");
-        }
-
-        if (document.getElementById('journalText').style.textDecoration === "underline") {
-            sessionStorage.setItem("underline" + posName, "true");
-        } else {
-            sessionStorage.setItem("underline" + posName, "false");
-        }
     }
-
-    sessionStorage.setItem("fontColor" + posName, document.getElementById('journalText').style.color);
-    sessionStorage.setItem("fontSize" + posName, document.getElementById('journalText').style.fontSize);
-    sessionStorage.setItem("fontFamily" + posName, document.getElementById('journalText').style.fontFamily);
-
-
 }
-
-
-
-
-
-
-
 
 function sentence() {
     "use strict";
@@ -331,17 +273,6 @@ function sentence() {
             "rolling"
         ],
 
-
-        //     Math.floor((Math.random() * 100) + 1);
-        //
-        //The result could be: 52 
-        //    
-
-        //    var nounRand = ;
-        //    var nounRandTwo = );
-        //    
-        //    alert(nounRand + " vs " + nounRandTwo);
-
         selectNoun = noun[Math.floor((Math.random()) * noun.length)],
         selectNounTwo = noun[Math.floor((Math.random()) * noun.length)],
 
@@ -354,11 +285,5 @@ function sentence() {
 
         answer = "\"The " + selectAdjective + " " + selectNoun + " was " + selectAdverb + " " + selectVerb + " the " + selectAdjectiveTwo + " " + selectNounTwo + " when...\"";
 
-    //    alert(answer);
-
     document.getElementById('randomBox').innerHTML = answer;
-
-    //    return 
-
-
 }
