@@ -8,7 +8,7 @@ script.src = 'http://code.jquery.com/jquery-1.11.0.min.js';
 script.type = 'text/javascript';
 document.getElementsByTagName('head')[0].appendChild(script);
 
-// controls the functionality of the sign in button
+// controls the functionality of the next button
 function onSignIn(googleUser) {
     "use strict";
 
@@ -32,8 +32,6 @@ function onSignIn(googleUser) {
 
     window.location.replace('new.html');
 }
-<<<<<<< HEAD
-=======
 
 // controls the functionality of the register button
 function register() {
@@ -45,4 +43,3 @@ function register() {
         document.getElementByName("next").style.visibility = "hidden";
     }
 }
->>>>>>> c4543a1f52d00c2b4f91e7730904fd27acf8493c
