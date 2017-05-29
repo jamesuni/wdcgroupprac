@@ -13,7 +13,7 @@ function onSignIn(googleUser) {
     "use strict";
 
     var profile = googleUser.getBasicProfile(),
-        email   = profile.getEmail();
+        email = profile.getEmail();
 
     console.log("onSignIn()");
     console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -27,6 +27,7 @@ function onSignIn(googleUser) {
         email: email
     }, function (data) {
         if (data === 'done') {
+            console.log("email.date == done");
         }
     });
 
@@ -35,7 +36,7 @@ function onSignIn(googleUser) {
 
 // controls the functionality of the register button
 function register() {
-//    "use strict";   //this stops the page from moving on
+    //    "use strict";   //this stops the page from moving on
     console.log("register()");
     if (document.getElementsByName("task") === "Account Sign In") {
         document.getElementsByName("task") = "Create New Account";
