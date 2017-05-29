@@ -17,15 +17,15 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="history.js"></script>
     <script src="account.js"></script>
-    <script src="index.js">
-        //to get profile info
-
-    </script>
-
+    <script src="index.js"></script>
     <script>
-        var clientId = '628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com';
-        var apiKey = 'AIzaSyAakfWDUKc-AWzkvJu5CNv1djte1Im0rQA';
-        var scopes = 'https://www.googleapis.com/auth/calendar';
+        /*global gapi */
+        /*global window */
+        /*global document */
+
+        var clientId = '628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com',
+            apiKey = 'AIzaSyAakfWDUKc-AWzkvJu5CNv1djte1Im0rQA',
+            scopes = 'https://www.googleapis.com/auth/calendar';
 
         function handleClientLoad() {
             gapi.client.setApiKey(apiKey);
@@ -75,9 +75,8 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
 
     <input id="mainButtonSelected" type="button" onclick="location.href='history.html';" value="History" />
     <input class="mainButton" type="button" onclick="location.href='account.html';" value="Account" />
-    <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" /> 
+    <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" />
     <input class="mainButton" type="button" onclick="location.href='event.html';" value="Event +" /> <br>
-
 
     <select id="selectYear" onchange="makeApiCall();loadBoxes()">
                 <option value="2013">2013</option>
@@ -102,16 +101,12 @@ http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-ap
                 <option value="12">December</option>
     </select>
 
-    <ul id="events"> </ul>
-    <!-- ul = 'Unorderd List', events go in here -->
-
-    <div2 id="div2"> </div2>
-    <!-- new list test goes in here -->
+    <ul id="events"> </ul>   <!-- events go in here -->
+    <div2 id="div2"> </div2> <!-- new list test goes in here -->
 
     <a href="#" id="authorize-button" onclick="handleAuthClick();">Authorize Button</a>
     <script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script>
     <!--    moving the handleClientLoad() script to top of page stops it running automatically-->
-
 
 </body>
 

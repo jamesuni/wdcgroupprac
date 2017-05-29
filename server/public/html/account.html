@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html>
 
 <head>
@@ -10,23 +11,22 @@
     <link href="http://fonts.googleapis.com/css?family=Sansita+One' rel='stylesheet">
     <meta name="google-signin-scope" content="profile email">
     <meta name="google-signin-client_id" content="628908668837-h83l4eba9t5qeccitkpu0t5qoffmbd9l.apps.googleusercontent.com">
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">
     <script src="https://apis.google.com/js/platform.js" async defer></script>
-        < script src = "Google.js" >
-
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="account.js"></script>
 
-
-
     <script>
-        $(document).ready(function() {
+        /*global document*/
+        /*global localStorage*/
+        /*global $*/
+        /*global alert*/
 
+        $(document).ready(function() {
             $("#submit").click(function() {
 
-                var backColor = $("#selectBackground option:selected").text();
-                var textColor = $("#selectTextColor option:selected").text();
-                var email = localStorage.getItem('email');
+                var backColor = $("#selectBackground option:selected").text(),
+                    textColor = $("#selectTextColor option:selected").text(),
+                    email = localStorage.getItem('email');
 
                 $.post("http://localhost:8080/login", {
                     backgroundColor: backColor,
@@ -41,11 +41,6 @@
         });
 
     </script>
-
-
-
-
-
 </head>
 
 <body onload="loadBackgroundColor()">
@@ -58,12 +53,9 @@
     <nav>
         <input class="mainButton" type="button" onclick="location.href='history.html';" value="History" />
         <input id="mainButtonSelected" type="button" onclick="location.href='account.html';" value="Account" />
-        <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" />    
+        <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" />
         <input class="mainButton" type="button" onclick="location.href='event.html';" value="Event +" />
-
     </nav>
-
-
 
     <h2> Select background color </h2>
 
@@ -117,7 +109,6 @@
                 <option value="purple" >Purple   </option>
                 <option value="salmon" >Salmon   </option>
                 <option value="silver" >Silver   </option>
-
             </select>
 
     <h2> Select title style </h2>
@@ -171,7 +162,6 @@
     <input type="radio" name="yes" value="no"> Receive more mail about cats <br>
 
     <input type="button" id="submit" value="Submit Settings">
-
 
     <div id="submitStatus"> </div>
 
