@@ -25,8 +25,9 @@ function makeApiCall() {
                 var dateString = resp.items[i].start.date;
 
                 li.appendChild(document.createTextNode(resp.items[i].summary));
-                li.appendChild(document.createTextNode(" –––––– "));
+                li.appendChild(document.createTextNode(resp.items[i].etag));
                 li.appendChild(document.createTextNode(resp.items[i].start.date));
+                li.appendChild(document.createTextNode(resp.items[i].end.date));
 
                 if (dateString !== undefined) {
                     var splitString = dateString.split('-');
@@ -102,14 +103,14 @@ function loadBoxes() {
                 var subData = data.substr(found, data.length - found);
                 var dataArray = subData.split("\""); //using ["] as divider
 
-                if (dataArray[1] !== ":null,") {
-                    inputJournal.value = dataArray[2];
+                inputJournal.value = dataArray[2];
 
-                    console.log("entry found for day: " + dateString);
-                    console.log("subData: " + subData);
-                    console.log("dataArray[2] = " + dataArray[2]);
-                }
+                console.log("entry found for day: " + dateString);
+                console.log("subData: " + subData);
+                console.log("dataArray[2] = " + dataArray[2]);
+
             }
+
             div.appendChild(inputJournal);
         } //for
 

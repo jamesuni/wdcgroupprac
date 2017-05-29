@@ -1,0 +1,181 @@
+html {
+    background-color: gray;
+    text-align: center; /* by default, text should be 'scaled' and 'centered' */
+    font-family: arial;
+    }
+
+/*                      not working
+#submit {
+       background-color: #ccc;
+    background-image: url(journal.jpg)
+
+}
+*/
+
+#index_header{
+        padding-top: 10%;
+}
+
+
+#buttonBold {
+       font-weight:bold
+}
+
+/* not working
+.button:hover #submit.top {
+       border: solid #78ceff 2px;
+}
+*/
+
+#buttonItalic {
+       font-style:italic
+}
+
+#buttonUnderline {
+       text-decoration:underline
+}
+
+nav {
+  align-items: center;
+  margin: auto;
+}
+
+div1  /* div1 is for the main title/logo that is on every page */
+{
+/*       font-style:italic;*/
+}
+
+div2 /* div2 is for the rest of the content on the page, as seperated from the background */
+{
+        text-align: center; /* by default, text should be 'scaled' and 'centered' */
+/*        font-style:italic;*/
+}
+
+
+
+/* use class for multiple elements to style, not IDs e.g. class="mainButton" not id="mainButton"*/
+
+/* credit to http://css3buttongenerator.com/ */
+.mainButton {
+  background: #000000;
+  background-image: linear-gradient(to bottom, #000000, #757575);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  text-shadow: 0px 0px 30px #ff0000;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 2px;
+  text-decoration: none;
+}
+
+.mainButton:hover {
+  background: #3cb0fd;
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+#mainButtonSelected { /* same as mainButton:hover */
+background: #3cb0fd;
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  -webkit-border-radius: 60;
+  -moz-border-radius: 60;
+  border-radius: 60px;
+  text-shadow: 0px 0px 30px #ff0000;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 30px;
+  padding: 10px 20px 10px 20px;
+  border: solid #000000 2px;
+  text-decoration: none;
+}
+
+
+/*
+#googleDiv { //working!
+    align-content: center;
+    background: green;
+
+}
+*/
+h1 {
+    /* credit to GenerateCSS.com */
+    text-decoration:none;
+    font-size: 60px;
+    font-family: serif;
+    font-style: italic;
+    text-align-last: center;
+    color: black;
+}
+
+#loginBox
+{
+    float: right;
+    font-size: 15px;
+    font-style: italic;
+    color: #4286f4; /* changed to blue when login occurs */
+}
+
+
+#randomBox
+{
+        background: white;
+        font-style: italic;
+}
+
+
+/* ––––––––––giving all the small buttons the same style as the large buttons */
+#testContent1, #submit, #randomButton, #logout
+{
+    background: black;
+    color:white;
+    border: solid #000000 2px;
+    border-radius: 60px;
+}
+
+
+#testContent1:hover, #submit:hover, #randomButton:hover, #logout:hover
+{
+    background: #3cb0fd;
+    border: solid #000000 2px;
+    border-radius: 60px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* for APItext */
+/* credit to http://stackoverflow.com/questions/16156594/how-to-change-border-color-of-textarea-on-focus */
+#calandarBox1:focus, #calandarBox2:focus, #calandarBox3:focus, #calandarBox4:focus, #calandarBox5:focus, #calandarBox6:focus, #calandarBox7:focus, #calandarBox8:focus, #calandarBox9:focus, #calandarBox10:focus, #calandarBox11:focus, #calandarBox12:focus, #calandarBox13:focus, #calandarBox14:focus, #calandarBox15:focus, #calandarBox16:focus, #calandarBox17:focus, #calandarBox18:focus, #calandarBox19:focus, #calandarBox20:focus, #calandarBox21:focus, #calandarBox22:focus, #calandarBox23:focus, #calandarBox24:focus, #calandarBox25:focus, #calandarBox26:focus, #calandarBox27:focus, #calandarBox28:focus, #calandarBox29:focus, #calandarBox30:focus, #calandarBox31:focus
+{
+    outline: none !important;
+    border-color: #719ECE;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#calandarBox1:focus::placeholder, #calandarBox2:focus::placeholder, #calandarBox3:focus::placeholder, #calandarBox4:focus::placeholder, #calandarBox5:focus::placeholder, #calandarBox6:focus::placeholder, #calandarBox7:focus::placeholder, #calandarBox8:focus::placeholder, #calandarBox9:focus::placeholder, #calandarBox10:focus::placeholder, #calandarBox11:focus::placeholder, #calandarBox12:focus::placeholder, #calandarBox13:focus::placeholder, #calandarBox14:focus::placeholder, #calandarBox15:focus::placeholder, #calandarBox16:focus::placeholder, #calandarBox17:focus::placeholder, #calandarBox18:focus::placeholder, #calandarBox19:focus::placeholder, #calandarBox20:focus::placeholder, #calandarBox21:focus::placeholder, #calandarBox22:focus::placeholder, #calandarBox23:focus::placeholder, #calandarBox24:focus::placeholder, #calandarBox25:focus::placeholder, #calandarBox26:focus::placeholder, #calandarBox27:focus::placeholder, #calandarBox28:focus::placeholder, #calandarBox29:focus::placeholder, #calandarBox30:focus::placeholder, #calandarBox31:focus::placeholder
+{
+    color: aqua;
+}
+
+#calandarBox1:hover, #calandarBox2:hover, #calandarBox3:hover, #calandarBox4:hover, #calandarBox5:hover, #calandarBox6:hover, #calandarBox7:hover, #calandarBox8:hover, #calandarBox9:hover, #calandarBox10:hover, #calandarBox11:hover, #calandarBox12:hover, #calandarBox13:hover, #calandarBox14:hover, #calandarBox15:hover, #calandarBox16:hover, #calandarBox17:hover, #calandarBox18:hover, #calandarBox19:hover, #calandarBox20:hover, #calandarBox21:hover, #calandarBox21:hover, #calandarBox22:hover, #calandarBox23:hover, #calandarBox24:hover, #calandarBox25:hover, #calandarBox26:hover, #calandarBox27:hover, #calandarBox28:hover, #calandarBox29:hover, #calandarBox30:hover, #calandarBox31:hover
+{
+        border-color: blue;
+}
+
+#calandarBox1::placeholder, #calandarBox2::placeholder, #calandarBox3::placeholder, #calandarBox4::placeholder, #calandarBox5::placeholder, #calandarBox6::placeholder, #calandarBox7::placeholder, #calandarBox8::placeholder, #calandarBox9::placeholder, #calandarBox10::placeholder, #calandarBox11::placeholder, #calandarBox12::placeholder, #calandarBox13::placeholder, #calandarBox14::placeholder, #calandarBox15::placeholder, #calandarBox16::placeholder, #calandarBox17::placeholder, #calandarBox18::placeholder, #calandarBox19::placeholder, #calandarBox20::placeholder, #calandarBox21::placeholder, #calandarBox22::placeholder, #calandarBox23::placeholder, #calandarBox24::placeholder, #calandarBox25::placeholder, #calandarBox26::placeholder, #calandarBox27::placeholder, #calandarBox28::placeholder, #calandarBox29::placeholder, #calandarBox30::placeholder, #calandarBox31::placeholder
+{
+    font-size: 40pt; color: #555;
+}
