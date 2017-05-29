@@ -1,4 +1,14 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+=======
+
+<!--
+credit to:
+https://gsuite-developers.googleblog.com/2011/12/using-new-js-library-to-unlock-power-of.html
+http://stackoverflow.com/questions/11607465/need-good-example-google-calendar-api-in-javascript
+-->
+
+>>>>>>> c4543a1f52d00c2b4f91e7730904fd27acf8493c
 <html>
 
 <head>
@@ -55,7 +65,7 @@
     </script>
 </head>
 
-<body onload="loadBackgroundColor()">
+<body onload="loadBackgroundColor();makeApiCall();loadBoxes()">
 
     <header id="pageTitle">
         <h1> Journal Website </h1>
@@ -64,7 +74,8 @@
 
     <input id="mainButtonSelected" type="button" onclick="location.href='history.html';" value="History" />
     <input class="mainButton" type="button" onclick="location.href='account.html';" value="Account" />
-    <input class="mainButton" type="button" onclick="location.href='new.html';" value="+" /> <br>
+    <input class="mainButton" type="button" onclick="location.href='new.html';" value="Entry +" /> 
+    <input class="mainButton" type="button" onclick="location.href='event.html';" value="Event +" /> <br>
 
 
     <select id="selectYear" onchange="makeApiCall();loadBoxes()">

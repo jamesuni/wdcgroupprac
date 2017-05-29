@@ -3,11 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Journal Website - New</title>
+    <title>Journal Website - New Entry</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="./favicon.png">
     <script src="new.js"></script>
     <script src="account.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"> </script>
+
 </head>
 
 <body onload="loadBackgroundColor()">
@@ -20,7 +22,8 @@
 
     <input class="mainButton" type="button" onclick="location.href='history.html';" value="History" />
     <input class="mainButton" type="button" onclick="location.href='account.html';" value="Account" />
-    <input id="mainButtonSelected" type="button" onclick="location.href='new.html';" value="+" />
+    <input id="mainButtonSelected" type="button" onclick="location.href='new.html';" value="Entry +" />
+    <input class="mainButton" type="button" onclick="location.href='event.html';" value="Event +" />
 
 
     <h2>Write journal entry: </h2> <br>

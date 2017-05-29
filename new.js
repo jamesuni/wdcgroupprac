@@ -114,7 +114,14 @@ function getNumEntries() {
 
 
 
-
+//function escapeHtml(text) {
+//  return text
+//      .replace(/&/g, "&amp;")
+//      .replace(/</g, "&lt;")
+//      .replace(/>/g, "&gt;")
+//      .replace(/"/g, "&quot;")
+//      .replace(/'/g, "&#039;");
+//}
 
 
 function testSet() {
@@ -123,16 +130,22 @@ function testSet() {
     //works out how many entries there are, then + 1 to get to an empty place.
     var position = getNumEntries() + 1,
         posName = position.toString(),
-        storageEmail = localStorage.getItem('email');
+        storageEmail = localStorage.getItem('email'),
+        basicText = document.getElementById('journalText').value;
     
     console.log("storageEmail: " + storageEmail);
 
+    basicText = basicText.replace(/;/g, ',');
+    basicText = basicText.replace(/\(/g, "[");
+    basicText = basicText.replace(/\)/g, "]");
+
     $.post("http://localhost:8080/newentry", {
-        text: document.getElementById('journalText').value,
+        text: basicText,
         date: getDate(),
         email: storageEmail
     }, function (data, status) { //this is the callback function. it only executes when/IF the callback occurs
 
+        console.log("basicText: " + basicText);
         console.log("data: " + data); //data is a string
         console.log("status = " + status);
     });
