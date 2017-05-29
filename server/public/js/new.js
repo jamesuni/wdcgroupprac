@@ -116,9 +116,7 @@ function testSet() {
     console.log("storageEmail: " + storageEmail);
     console.log("jsonString: " + jsonString);
 
-    //for history.html:
-    //var json = JSON.stringify(eval("(" + str + ")"));
-
+    //Input Validation:
     text = text.replace(/;/g, ',');
     text = text.replace(/\(/g, "[");
     text = text.replace(/\)/g, "]");
