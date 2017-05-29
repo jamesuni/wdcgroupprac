@@ -3,7 +3,6 @@
 /*global console */
 /*global gapi */
 
-
 function boldText() {
     "use strict";
     if (document.getElementById('journalText').style.fontWeight === "bold") {
@@ -37,7 +36,6 @@ function underlineText() {
     }
 }
 
-
 function chooseFont() {
     "use strict";
     document.getElementById('journalText').style.fontFamily = document.getElementById('textFont').value;
@@ -52,8 +50,6 @@ function chooseColor() {
     "use strict";
     document.getElementById('journalText').style.color = document.getElementById('textColor').value;
 }
-
-
 
 function getDate() {
     "use strict";
@@ -77,7 +73,6 @@ function getDate() {
     return today;
 }
 
-
 function titleTextClick() {
     "use strict";
     var today = getDate();
@@ -88,8 +83,6 @@ function journalTextClick() {
     "use strict";
     document.getElementById('journalText').placeholder = "What happened today? Start at the beginning...";
 }
-
-
 
 function getNumEntries() {
     "use strict";
@@ -103,7 +96,6 @@ function getNumEntries() {
     }
     return numEntries;
 }
-
 
 function testSet() {
     "use strict";
@@ -120,13 +112,10 @@ function testSet() {
         textDecoration = document.getElementById('journalText').style.textDecoration,
         color = document.getElementById('journalText').style.color,
         jsonString = "{ text: '" + text + "', fontStyle: '" + fontStyle + "', fontWeight: '" + fontWeight + "', fontSize: '" + fontSize + "', fontFamily: '" + fontFamily + "', textDecoration: '" + textDecoration + "', color: '" + color + "'}";
-        
-    console.log("storageEmail: " + storageEmail);
-    
 
-    
+    console.log("storageEmail: " + storageEmail);
     console.log("jsonString: " + jsonString);
-        
+
     //for history.html:
     //var json = JSON.stringify(eval("(" + str + ")"));
 

@@ -36,11 +36,11 @@ function onSignIn(googleUser) {
 
 // controls the functionality of the register button
 function register() {
-    //    "use strict";   //this stops the page from moving on
+    "use strict";   //this DID stop the page from moving on? but it works now..?
     console.log("register()");
     if (document.getElementsByName("task") === "Account Sign In") {
-        document.getElementsByName("task") = "Create New Account";
-        document.getElementsByName("forminput") = "";
+//        document.getElementsByName("task") = "Create New Account";
+//        document.getElementsByName("forminput") = "";
         document.getElementByName("next").style.visibility = "hidden";
     }
 }
